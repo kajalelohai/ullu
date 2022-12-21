@@ -1,0 +1,13 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "jsxImportSource": "react",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
