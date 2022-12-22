@@ -1,6 +1,11 @@
-import React from 'react';
-import {WordsCollection} from './Data/index';
+import { WORDBOOK } from './data';
 
 export function Card() {
-    return <div>{WordsCollection.map(collection => collection.word)}</div>;
+  return (
+    <div>
+      {WORDBOOK.map((frag) => (
+        <span>{frag.word}</span>
+      ))}
+    </div>
+  );
 }
