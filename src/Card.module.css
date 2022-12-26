@@ -1,5 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
-  font-size: 14px;
+  font-size: 100%;
 }
 
 body {
@@ -13,9 +19,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+:root {
+  --main-bg-color: #000000;
+  --main-text-color: #FFFFFF;
+  --secondary-bg-color: #EEEEEE;
+  --secondary-text-color: #CF0A0A;
+  --supporting-color: #DC5F00;
 }
 
 .card {
@@ -25,18 +34,45 @@ body {
   min-width: 100vh;
   justify-content: center;
   padding: .5rem;
-  font-size: 5rem;
-  margin-top: 18rem;
+  margin-top: 10rem;
+}
+
+.line {
+  height: 1rem;
+  width: 27rem;
+  border-bottom: 0.1rem solid var(--main-bg-color);
 }
 
 .cardText {
-  background: #000;;
-  color: #fff;
-  border: 0.1rem solid #000;;
-  border-radius: 0.5rem;
-  padding: 3.5rem 8rem;
-  box-shadow: 0 0 15px 6px #646464;
+  font-size: 5rem;
+  color: var(--main-bg-color);
+  text-transform: uppercase;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.clickableText {
+  font-size: 1.3rem;
+  padding-top: 0.5rem;
+  color: var(--main-bg-color);
   cursor: pointer;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.clickableText:hover {
+  color: var(--secondary-text-color);
+}
+
+.cardDetails {
+  margin-top: 3.5rem;
+  font-size: 2.3rem;
+  min-height: 5rem;
 }
 
 .footer {
@@ -50,15 +86,40 @@ body {
   cursor: pointer;
   margin: 0rem 4rem;
   padding: 1.3rem 5.5rem;
-  border: 0.1rem solid #d3d3d3;
+  border: 0.1rem solid var(--secondary-bg-color);
   border-radius: 0.5rem;
-  background: #000;
-  color: #fff;
+  background: var(--main-bg-color);
+  color: var(--main-text-color);
   transition: all 0.1s ease-in-out;
 }
 
 .footerButtons:hover {
   transition: all 0.3s;
-  background: #BFC0C0;
-  color: #000;
+  background: var(--secondary-bg-color);
+  color: var(--main-bg-color);
 }
+
+.note {
+  font-size: 1.2rem;
+  padding-top: 1.5rem;
+  color: var(--secondary-text-color);
+}
+
+@media screen and (max-width: 1200px) {
+  #primary {width:95%;  margin: 0 auto; }
+}
+
+/* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {
+  #primary { width:67%; }
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+  #primary { width:100%; }
+}
+
+@media (min-width: 640px) { body {font-size:1rem;} } 
+@media (min-width:768) { body {font-size:1.2rem;} } 
+@media (min-width:1060px) { body {font-size:1.5rem;} } 
+@media (min-width:1200px) { body {font-size:1.5rem;} } 

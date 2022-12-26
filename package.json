@@ -2,7 +2,7 @@
   "name": "ullu",
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel src/index.tsx",
+    "start": "parcel",
     "build": "npm run lint && parcel build src/index.tsx",
     "lint": "npm run check && eslint",
     "check": "tsc --noEmit"
