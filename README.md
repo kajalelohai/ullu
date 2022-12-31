@@ -10,3 +10,6 @@ The data initially will be an array of objects containing :
 2. meaning
 3. array of example sentences
 4. level
+
+
+show example should display one then on click of another example other one

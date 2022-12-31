@@ -1,15 +1,25 @@
-interface WordBookItem {
+interface FlashCard {}
+
+interface VocabCard extends FlashCard {
   word: string;
   meaning: string;
-  sentences: string[];
-  status: string;
 }
 
-export const WORDBOOK: WordBookItem[] = [
+interface VocabExample {
+  id: string;
+  body: string;
+  words: string[];
+}
+
+export const VOCAB_CARDS: VocabCard[] = [
   {
     word: 'sehr',
-    meaning: 'very',
-    sentences: ['der Hund ist sehr gut', 'die tasche ist sehr tuer'],
-    status: '1'
+    meaning: 'very'
   }
+];
+
+export const Examples: VocabExample[] = [
+  { id: '1', body: 'Der Hund ist sehr gut', words: ['sehr', 'hund'] },
+  { id: '2', body: 'Die tasche ist sehr tuer', words: ['sehr', 'tuer'] },
+  { id: '3', body: 'Das spitzer ist sehr billig', words: ['sehr', 'billig'] }
 ];

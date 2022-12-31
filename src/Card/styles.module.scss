@@ -17,6 +17,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 
 :root {
@@ -31,7 +32,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 100vh;
   justify-content: center;
   padding: .5rem;
   margin-top: 10rem;
@@ -102,7 +102,8 @@ body {
 .note {
   font-size: 1.2rem;
   padding-top: 1.5rem;
-  color: var(--secondary-text-color);
+  color: var(--main-bg-color);
+  opacity: 0.30;
 }
 
 @media screen and (max-width: 1200px) {
@@ -118,8 +119,3 @@ body {
 @media screen and (max-width: 768px) {
   #primary { width:100%; }
 }
-
-@media (min-width: 640px) { body {font-size:1rem;} } 
-@media (min-width:768) { body {font-size:1.2rem;} } 
-@media (min-width:1060px) { body {font-size:1.5rem;} } 
-@media (min-width:1200px) { body {font-size:1.5rem;} } 

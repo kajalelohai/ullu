@@ -6,7 +6,8 @@
     "jsxImportSource": "react",
     "isolatedModules": true,
     "esModuleInterop": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "skipLibCheck": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
