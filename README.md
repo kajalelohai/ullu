@@ -1,15 +1,27 @@
 # ullu - An applicationn to learn German
 
-- Setup the application with React
-- Initially there will be a card on the screen which will display a single german word on it and the user will guess the meaning of the word
-- Then click on one of the buttons Easy, Normal or  Hard and jump to next.
-- On Clicking of the selected button the card will flip show its meaning.
+Ullu unlike other language learning applications, do not do any spoon feeding.
+User builds their own learning path, Ullu only provides a medium for practicing
+what user learns on their own.
 
-The data initially will be an array of objects containing :
-1. word
-2. meaning
-3. array of example sentences
-4. level
+Ullu provides:
+1. A set of interactive UI widgets for practicing in different ways
+2. An algorithm which keeps user on track and ensure optimal learning
 
+Following widgets have been implemented so far:
 
-show example should display one then on click of another example other one
+1. **Vocabulary Card**
+
+    **Behavior**
+    1. Shows a word and ask user to guess it in their mind
+    2. Accepts feedback from user on how hard it was to guess the word. This
+       feedback is used to determine how often this word will be repeated for
+       user
+    3. Provides a way to see examples before revealing the meaning of shown word
+
+## TODOs
+- [ ] Decide
+    - [ ] How to do state management
+    - [ ] How to perform async actions
+    - [ ] How to handle errors
+- [ ] Update `VocabCard` component
