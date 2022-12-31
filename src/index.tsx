@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
-import { Card } from './Card';
+import { VocabCard } from './components/VocabCard';
 
 const container = document.getElementById('app')!;
 const root = createRoot(container);
-root.render(<Card />);
+root.render(<VocabCard />);

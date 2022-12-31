@@ -3,6 +3,7 @@ export const cardContent: string;
 export const cardDetails: string;
 export const cardText: string;
 export const clickableText: string;
+export const error: string;
 export const footer: string;
 export const footerButtons: string;
 export const line: string;

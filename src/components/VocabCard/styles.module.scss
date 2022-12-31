@@ -106,6 +106,10 @@ body {
   opacity: 0.30;
 }
 
+.error {
+  color: red;
+}
+
 @media screen and (max-width: 1200px) {
   #primary {width:95%;  margin: 0 auto; }
 }
@@ -119,3 +123,4 @@ body {
 @media screen and (max-width: 768px) {
   #primary { width:100%; }
 }
+

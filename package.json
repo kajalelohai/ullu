@@ -5,7 +5,7 @@
     "start": "parcel",
     "build": "npm run lint && parcel build src/index.tsx",
     "lint": "npm run check && eslint",
-    "chekc": "tsc --noEmit",
+    "check": "tsc --noEmit",
     "typed-scss-modules": "typed-scss-modules src"
   },
   "devDependencies": {
