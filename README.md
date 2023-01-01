@@ -22,6 +22,29 @@ Following widgets have been implemented so far:
 ## TODOs
 - [ ] Decide
     - [ ] How to do state management
-    - [ ] How to perform async actions
+    - [ ] How to perform async actions12345
     - [ ] How to handle errors
 - [ ] Update `VocabCard` component
+
+## State management Libraries to be considered
+
+- [ ] Zustand
+    - [ ] Its small and lightweight
+    - [ ] Makes the entire global state a hook and then just need to import it when needed
+    - [ ] Less boilerplate and don’t need to wrap components in context provider
+    - [ ] less learnning curve involved
+
+- [ ] Redux Toolkit
+    - [ ] As compared with Redux its requires lesser code
+    - [ ] createAsyncThunk helps in handling async operations well 
+    - [ ] Its popular tried and tested by many developers
+
+- [ ] Recoil
+    - [ ] less boilerplate
+    - [ ] backed by facebook with community support
+    - [ ] learning curve is involved
+
+- [ ] Voltio
+    - [ ] light weight proxy based state management
+    - [ ] learning curve involved
+
