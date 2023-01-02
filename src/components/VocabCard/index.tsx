@@ -1,25 +1,25 @@
 import * as styles from './styles.module.scss';
 import { nextCardPayload } from '../../services/vocab';
 import { useEffect, useState } from 'react';
-import { VocabCardPayload } from '../../types';
+import { useVocabStore } from '../..';
 
 export function VocabCard() {
-  const [cardPayload, setCardPayload] = useState<VocabCardPayload | null>(null);
+  const {word, updateVocabCard } = useVocabStore();
 
   useEffect(() => {
     nextCardPayload().then((card) => {
-      setCardPayload(card);
+      updateVocabCard(card);
     });
   }, []);
 
-  if (!cardPayload) {
+  if (!word) {
     return <div className={styles.error}>Something went wrong.</div>;
   }
 
   return (
     <div id="primary" className={styles.card}>
-      <div key={cardPayload.word} className={styles.cardContent}>
-        <span className={styles.cardText}>{cardPayload.word}</span>
+      <div key={word} className={styles.cardContent}>
+        <span className={styles.cardText}>{word}</span>
         <div className={styles.line} />
         <div className={styles.clickableText} onClick={() => {}}>
           {'Show Example'}
