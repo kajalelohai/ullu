@@ -1,11 +1,12 @@
 import * as styles from './styles.module.scss';
 import { nextCardPayload } from '../../services/vocab';
-import { useEffect, useState } from 'react';
-import { useVocabStore } from '../..';
+import { useEffect } from 'react';
+import useStore from '../../store';
 
 export function VocabCard() {
-  const {word, updateVocabCard } = useVocabStore();
-
+  const word = useStore(state => state.word);
+  const updateVocabCard = useStore(state => state.updateVocabCard);
+   
   useEffect(() => {
     nextCardPayload().then((card) => {
       updateVocabCard(card);
