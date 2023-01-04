@@ -4,13 +4,13 @@ import { useEffect } from 'react';
 import useStore from '../../store';
 
 export function VocabCard() {
-  const word = useStore(state => state.word);
-  const updateVocabCard = useStore(state => state.updateVocabCard);
-   
+  const [word, nextWord] = useStore((state) => [
+    state.word,
+    state.nextVocabCard
+  ]);
+
   useEffect(() => {
-    nextCardPayload().then((card) => {
-      updateVocabCard(card);
-    });
+    nextWord();
   }, []);
 
   if (!word) {
@@ -28,9 +28,15 @@ export function VocabCard() {
       </div>
 
       <div className={styles.footer}>
-        <button className={styles.footerButtons}>Easy</button>
-        <button className={styles.footerButtons}>Normal</button>
-        <button className={styles.footerButtons}>Hard</button>
+        <button className={styles.footerButtons} onClick={() => nextWord()}>
+          Easy
+        </button>
+        <button className={styles.footerButtons} onClick={() => nextWord()}>
+          Normal
+        </button>
+        <button className={styles.footerButtons} onClick={() => nextWord()}>
+          Hard
+        </button>
       </div>
 
       <div className={styles.note}>How hard was guessing it?</div>

@@ -1,22 +1,20 @@
 import createStore from 'zustand';
 import { immer } from 'zustand/middleware/immer';
+import { nextCardPayload } from './services/vocab';
 
-type UpdateVocabPayload = {
+interface AppState {
   word: string;
   meaning: string;
-};
-
-interface VocabStore {
-  word: string;
-  meaning: string;
-  updateVocabCard: ({ word, meaning }: UpdateVocabPayload) => void;
+  nextVocabCard: () => Promise<void>;
 }
 
-export default createStore<VocabStore>()(
+export default createStore<AppState>()(
   immer((set) => ({
-  word: '',
-  meaning: '',
-  updateVocabCard: (card) =>
-    set((state) => ({ ...state, word: card.word, meaning: card.meaning }))
-}))
+    word: '',
+    meaning: '',
+    nextVocabCard: async () => {
+      const next = await nextCardPayload();
+      set(next);
+    }
+  }))
 );
