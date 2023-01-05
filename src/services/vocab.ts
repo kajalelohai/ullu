@@ -43,7 +43,7 @@ const VOCAB_CARDS: VocabCardPayload[] = [
   }
 ];
 
-const Examples: VocabExample[] = [
+const EXAMPLES: VocabExample[] = [
   { id: '1', body: 'Der Hund ist sehr gut', words: ['sehr', 'hund'] },
   { id: '2', body: 'Die tasche ist sehr tuer', words: ['sehr', 'tuer'] },
   { id: '3', body: 'Das spitzer ist sehr billig', words: ['sehr', 'billig'] }
@@ -51,4 +51,8 @@ const Examples: VocabExample[] = [
 
 export const nextCardPayload = async (): Promise<VocabCardPayload> => {
   return VOCAB_CARDS[Math.floor(Math.random() * 100) % VOCAB_CARDS.length];
+};
+
+export const fetchNextExample = async (word: string): Promise<VocabExample> => {
+  return EXAMPLES[Math.floor(Math.random() * 100) % EXAMPLES.length];
 };

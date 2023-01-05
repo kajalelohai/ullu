@@ -1,3 +1,4 @@
+export const additionalDetails: string;
 export const card: string;
 export const cardContent: string;
 export const cardDetails: string;
