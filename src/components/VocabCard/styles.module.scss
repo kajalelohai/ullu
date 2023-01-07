@@ -29,9 +29,9 @@ body {
 }
 
 $breakpoints: (
-  phone: 640px, 
-  tablet: 768px, 
-  desktop: 1024px
+  phone: 20rem, 
+  tablet: 48rem, 
+  desktop: 64rem
 ) !default;
 
 $media-expressions: (
@@ -132,17 +132,17 @@ $media-expressions: (
   color: red;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 75rem) {
   #primary {width:95%;  margin: 0 auto; }
 }
 
 /* Media Queries: Tablet Landscape */
-@media screen and (max-width: 1060px) {
+@media screen and (max-width: 66.25rem) {
   #primary { width:67%; }
 }
 
 /* Media Queries: Tabled Portrait */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 48rem) {
   #primary { width:100%; }
 }
 
