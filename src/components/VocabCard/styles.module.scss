@@ -21,11 +21,11 @@ body {
 }
 
 :root {
-  --main-bg-color: #000000;
+  --main-bg-color: #222;
   --main-text-color: #FFFFFF;
   --secondary-bg-color: #EEEEEE;
-  --secondary-text-color: #CF0A0A;
-  --supporting-color: #DC5F00;
+  --cta-text-color: #22222299;
+  --dim-text-color: #888;
 }
 
 $breakpoints: (
@@ -61,7 +61,6 @@ $media-expressions: (
 .cardText {
   font-size: 5rem;
   color: var(--main-bg-color);
-  text-transform: uppercase;
 }
 
 .cardContent {
@@ -77,18 +76,16 @@ $media-expressions: (
   color: var(--main-bg-color);
   cursor: pointer;
   font-weight: 500;
-  text-transform: capitalize;
 }
 
 .clickableText:hover {
-  color: var(--secondary-text-color);
+  color: var(--cta-text-color);
 }
 
 .additionalDetails {
   margin-top: 3.5rem;
   font-size: 1.3rem;
   min-height: 2rem;
-  text-transform: capitalize;
 }
 
 .cardDetails {
@@ -124,8 +121,7 @@ $media-expressions: (
 .note {
   font-size: 1.2rem;
   padding-top: 1.5rem;
-  color: var(--main-bg-color);
-  opacity: 0.30;
+  color: var(--dim-text-color);
 }
 
 .error {

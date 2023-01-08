@@ -23,9 +23,12 @@ export function VocabCard() {
         <span className={styles.cardText}>{word}</span>
         <div className={styles.line} />
         <div className={styles.clickableText} onClick={() => nextExample()}>
-          {'Show Example'}
+          {example ? 'Show another example' : 'Show example'}
         </div>
-        <div className={styles.additionalDetails}> {example ?  example : null}</div>
+        <div className={styles.additionalDetails}>
+          {' '}
+          {example ? example : null}
+        </div>
       </div>
 
       <div className={styles.footer}>
