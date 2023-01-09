@@ -1,5 +1,5 @@
 import * as styles from './styles.module.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useStore from '../../store';
 
 export function VocabCard() {
@@ -8,6 +8,11 @@ export function VocabCard() {
     state.nextVocabCard
   ]);
   const [example, nextExample] = useStore((s) => [s.example, s.nextExample]);
+  const [meaning, isMeaning] = useStore((state) => [
+    state.meaning,
+    state.displayMeaning
+  ]); 
+  const showMeaning = useStore((s) => s.showMeaning);
 
   useEffect(() => {
     nextWord();
@@ -20,7 +25,12 @@ export function VocabCard() {
   return (
     <div id="primary" className={styles.card}>
       <div key={word} className={styles.cardContent}>
-        <span className={styles.cardText}>{word}</span>
+        <div className={styles.cardText}>
+          {isMeaning ?
+          <span className={styles.cardBack} onClick={() => {showMeaning()}}>{meaning}</span> :
+          <span className={styles.cardFront} onClick={() => {showMeaning() }}>{word}</span>
+          }
+        </div>
         <div className={styles.line} />
         <div className={styles.clickableText} onClick={() => nextExample()}>
           {example ? 'Show another example' : 'Show example'}
