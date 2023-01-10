@@ -40,9 +40,53 @@ const VOCAB_CARDS: VocabCardPayload[] = [
   {
     word: 'Hochschule',
     meaning: 'university'
+  },
+  {
+    word: 'Erwachsene',
+    meaning: 'adult'
+  },
+  {
+    word: 'Flugzeug',
+    meaning: 'airplane'
+  },
+  {
+    word: 'Arm',
+    meaning: 'Arm'
+  },
+  {
+    word: 'Baby',
+    meaning: 'Baby'
+  },
+  {
+    word: 'Rücken',
+    meaning: 'back'
+  },
+  {
+    word: 'Badezimmer',
+    meaning: 'Bathroom'
+  },
+  {
+    word: 'Bett',
+    meaning: 'Bed'
+  },
+  {
+    word: 'Schlaftzimmer',
+    meaning: 'Bedroom'
+  },
+  {
+    word: 'Rindfleisch',
+    meaning: 'Beef'
+  },
+  {
+    word: 'Bier',
+    meaning: 'Beer'
+  },
+  {
+    word: 'Fahrrad',
+    meaning: 'bicycle'
   }
 ];
-
+  
 const EXAMPLES: VocabExample[] = [
   { id: '1', body: 'Der Hund ist sehr gut', words: ['sehr', 'hund'] },
   { id: '2', body: 'Die tasche ist sehr tuer', words: ['sehr', 'tuer'] },

@@ -52,23 +52,21 @@ $media-expressions: (
   margin-top: 10rem;
 }
 
-.cardText {
+.flippableCardText {
   display: flex;
   cursor: pointer;
 }
 
-.cardFront,
-.cardBack {
+.cardTextFront,
+.cardTextBack {
   font-size: 5rem;
   color: var(--main-bg-color);
   padding: 2.5rem;
 }
 
-.cardBack {
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+.cardTextBack {
+  opacity: 0.70;
+  transition: all 0.52s ease-in-out;
 }
 
 .line {

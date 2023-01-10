@@ -25,10 +25,10 @@ export function VocabCard() {
   return (
     <div id="primary" className={styles.card}>
       <div key={word} className={styles.cardContent}>
-        <div className={styles.cardText}>
+        <div className={styles.flippableCardText}>
           {isMeaning ?
-          <span className={styles.cardBack} onClick={() => {showMeaning()}}>{meaning}</span> :
-          <span className={styles.cardFront} onClick={() => {showMeaning() }}>{word}</span>
+          <span className={styles.cardTextBack} onClick={() => {showMeaning()}}>{meaning}</span> :
+          <span className={styles.cardTextFront} onClick={() => {showMeaning() }}>{word}</span>
           }
         </div>
         <div className={styles.line} />
