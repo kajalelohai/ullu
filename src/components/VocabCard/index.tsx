@@ -1,6 +1,7 @@
 import * as styles from './styles.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useStore from '../../store';
+import { FileUpload } from './fileUpload';
 
 export function VocabCard() {
   const [word, nextWord] = useStore((state) => [
@@ -11,7 +12,7 @@ export function VocabCard() {
   const [meaning, isMeaning] = useStore((state) => [
     state.meaning,
     state.displayMeaning
-  ]); 
+  ]);
   const showMeaning = useStore((s) => s.showMeaning);
 
   useEffect(() => {
@@ -26,11 +27,27 @@ export function VocabCard() {
     <div id="primary" className={styles.card}>
       <div key={word} className={styles.cardContent}>
         <div className={styles.flippableCardText}>
-          {isMeaning ?
-          <span className={styles.cardTextBack} onClick={() => {showMeaning()}}>{meaning}</span> :
-          <span className={styles.cardTextFront} onClick={() => {showMeaning() }}>{word}</span>
-          }
+          {isMeaning ? (
+            <span
+              className={styles.cardTextBack}
+              onClick={() => {
+                showMeaning();
+              }}
+            >
+              {meaning}
+            </span>
+          ) : (
+            <span
+              className={styles.cardTextFront}
+              onClick={() => {
+                showMeaning();
+              }}
+            >
+              {word}
+            </span>
+          )}
         </div>
+        <FileUpload />
         <div className={styles.line} />
         <div className={styles.clickableText} onClick={() => nextExample()}>
           {example ? 'Show another example' : 'Show example'}

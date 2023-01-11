@@ -8,6 +8,7 @@ export const error: string;
 export const flippableCardText: string;
 export const footer: string;
 export const footerButtons: string;
+export const importButton: string;
 export const line: string;
 export const note: string;
 export const primary: string;

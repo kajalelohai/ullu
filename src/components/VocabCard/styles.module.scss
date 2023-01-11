@@ -69,6 +69,15 @@ $media-expressions: (
   transition: all 0.52s ease-in-out;
 }
 
+.importButton {
+  cursor: pointer;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  padding: 0.80rem, 1.80rem;
+  border: 0.25rem solid var(--main-bg-color);
+  border-radius: 0.5rem;
+}
+
 .line {
   height: 1rem;
   width: 27rem;
