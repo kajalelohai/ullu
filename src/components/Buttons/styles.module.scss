@@ -1,0 +1,26 @@
+.btnSubmit {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 0rem 4rem;
+  padding: 1rem 2.3rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease-in-out;
+  font-size: 1.2rem;
+  background-color: var(--main-text-color);
+  color: var(--main-bg-color);
+}
+
+.btnSubmit:hover {
+  opacity: 0.9;
+}
+
+.btnSubmit:active {
+  letter-spacing: 2px;
+}
+
+.btnSubmit:disabled {
+  cursor: auto;
+  opacity: 0.5;
+  letter-spacing: normal;
+}
