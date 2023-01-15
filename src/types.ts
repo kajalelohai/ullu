@@ -43,7 +43,7 @@ export type Noun = {
 };
 
 // Union type for all the kinds of words available for Vocabulary type exercises
-export type VocabWord = Noun;
+export type Vocab = Noun;
 
 export enum Difficulty {
   hard = 'hard',
@@ -51,8 +51,8 @@ export enum Difficulty {
   easy = 'easy'
 }
 
-export interface LearnedVocabWord {
-  vocabWord: VocabWord;
+export interface LearnedVocab {
+  vocabWord: Vocab;
   lastPracticeOn: Date;
   difficulty: Difficulty;
 }

@@ -1,17 +1,17 @@
 import createStore from 'zustand';
 import { immer } from 'zustand/middleware/immer';
-import { LearnedVocabWord, SessionHistory, VocabWord } from './types';
+import { LearnedVocab, SessionHistory, Vocab } from './types';
 
 export interface AppState {
-  vocabBank: VocabWord[];
+  vocabBank: Vocab[];
   activeSession?: {
-    pendingVocab: VocabWord[];
-    doneVocab: VocabWord[];
-    currentWord: VocabWord;
+    pendingVocab: Vocab[];
+    doneVocab: Vocab[];
+    currentVocab: Vocab;
   };
   userProgress: {
     practiceHistory: SessionHistory[];
-    learnedVocab: LearnedVocabWord[];
+    learnedVocab: LearnedVocab[];
   };
 }
 

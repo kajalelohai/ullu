@@ -4,6 +4,9 @@ import useStore from '../../store';
 
 const Home = () => {
   const vocabBankSize = useStore((s) => s.vocabBank.length);
+  const learnedVocabCount = useStore(
+    (s) => s.userProgress.practiceHistory.length
+  );
 
   return (
     <div>
@@ -12,7 +15,16 @@ const Home = () => {
       </nav>
 
       <div className={s.container}>
-        <TextPanel text={vocabBankSize} subtext={'Total Words'} />
+        <TextPanel
+          className={s.panel}
+          text={String(vocabBankSize)}
+          subtext={'Total Words'}
+        />
+        <TextPanel
+          className={s.panel}
+          text={String(learnedVocabCount)}
+          subtext={'Learned Words'}
+        />
       </div>
     </div>
   );

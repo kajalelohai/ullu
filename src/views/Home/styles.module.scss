@@ -80,3 +80,11 @@ body {
   margin-top: 3rem;
   padding: 0rem 5rem;
 }
+
+.panel {
+  margin-right: 2rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
