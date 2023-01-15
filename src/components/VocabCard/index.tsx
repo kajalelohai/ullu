@@ -5,15 +5,18 @@ import { FileUpload } from './fileUpload';
 
 export function VocabCard() {
   const [word, nextWord] = useStore((state) => [
-    state.word,
-    state.nextVocabCard
+    state.vocab.word,
+    state.vocab.nextVocabCard
   ]);
-  const [example, nextExample] = useStore((s) => [s.example, s.nextExample]);
+  const [example, nextExample] = useStore((s) => [
+    s.vocab.example,
+    s.vocab.nextExample
+  ]);
   const [meaning, isMeaning] = useStore((state) => [
-    state.meaning,
-    state.displayMeaning
+    state.vocab.meaning,
+    state.vocab.displayMeaning
   ]);
-  const showMeaning = useStore((s) => s.showMeaning);
+  const showMeaning = useStore((s) => s.vocab.showMeaning);
 
   useEffect(() => {
     nextWord();

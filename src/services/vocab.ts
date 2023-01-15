@@ -93,8 +93,8 @@ const EXAMPLES: VocabExample[] = [
   { id: '3', body: 'Das spitzer ist sehr billig', words: ['sehr', 'billig'] }
 ];
 
-export const nextCardPayload = async (): Promise<VocabCardPayload> => {
-  return VOCAB_CARDS[Math.floor(Math.random() * 100) % VOCAB_CARDS.length];
+export const nextCardPayload = async (vocabList: VocabCardPayload[] = VOCAB_CARDS): Promise<VocabCardPayload> => {
+  return vocabList[Math.floor(Math.random() * 100) % VOCAB_CARDS.length];
 };
 
 export const fetchNextExample = async (word: string): Promise<VocabExample> => {
