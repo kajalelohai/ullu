@@ -28,6 +28,7 @@ body {
     --secondary-bg-color: #eeeeee;
     --cta-text-color: #22222299;
     --dim-text-color: #888;
+    --border-color: var(--cta-text-color);
   }
 }
 
@@ -38,7 +39,8 @@ body {
     --main-text-color: #ffffff;
     --secondary-bg-color: #444;
     --cta-text-color: #888;
-    --dim-text-color: #22222299;
+    --dim-text-color: #bbbbbb88;
+    --border-color: var(--cta-text-color);
   }
 }
 
@@ -71,4 +73,10 @@ body {
   width: 100%;
   text-align: center;
   justify-content: center;
+}
+
+.container {
+  display: flex;
+  margin-top: 3rem;
+  padding: 0rem 5rem;
 }
