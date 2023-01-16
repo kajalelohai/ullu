@@ -1,7 +1,7 @@
 import * as s from './styles.module.scss';
 import TextPanel from '../../components/Panels/Text';
 import useStore from '../../store';
-import SubmitButton from '../../components/Buttons';
+import Button from '../../components/Button';
 
 const Home = () => {
   const vocabBankSize = useStore((s) => s.vocabBank.length);
@@ -28,7 +28,9 @@ const Home = () => {
         />
       </div>
       <div className={s.footer}>
-        <SubmitButton text="Start Practice" onSubmit={() => { }} isdisabled />
+        <Button onClick={() => {}} disabled>
+          Start Practice
+        </Button>
       </div>
     </div>
   );
