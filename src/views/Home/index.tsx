@@ -1,13 +1,22 @@
+import { useCallback } from 'react';
 import * as s from './styles.module.scss';
 import TextPanel from '../../components/Panels/Text';
 import useStore from '../../store';
-import Button from '../../components/Button';
+import Button, { ButtonType } from '../../components/Button';
 
 const Home = () => {
   const vocabBankSize = useStore((s) => s.vocabBank.length);
   const learnedVocabCount = useStore(
     (s) => s.userProgress.practiceHistory.length
   );
+
+  const startPractice = useCallback(() => {
+    console.log('Start practice!');
+  }, []);
+
+  const importVocab = useCallback(() => {
+    console.log('Import Vocab');
+  }, []);
 
   return (
     <div>
@@ -20,7 +29,15 @@ const Home = () => {
           className={s.panel}
           text={String(vocabBankSize)}
           subtext={'Total Words'}
-        />
+        >
+          <Button
+            className={s.panelAction}
+            type={ButtonType.link}
+            onClick={importVocab}
+          >
+            Add more
+          </Button>
+        </TextPanel>
         <TextPanel
           className={s.panel}
           text={String(learnedVocabCount)}
@@ -28,7 +45,7 @@ const Home = () => {
         />
       </div>
       <div className={s.footer}>
-        <Button onClick={() => {}} disabled>
+        <Button onClick={startPractice} disabled>
           Start Practice
         </Button>
       </div>

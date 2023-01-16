@@ -4,10 +4,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  font-size: 10px;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-size: 10px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -43,9 +46,9 @@ body {
 }
 
 $breakpoints: (
-  sm: 20rem,
-  md: 48rem,
-  lg: 64rem
+  sm: 40rem,
+  md: 74rem,
+  lg: 108rem
 ) !default;
 
 body {
@@ -55,18 +58,21 @@ body {
 
 .topNav {
   width: 100%;
-  height: 4rem;
+  height: 6rem;
   color: var(--main-text-color);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 0 0.03rem var(--main-bg-color);
+  box-shadow: 0 0 0.4rem var(--border-color);
   display: flex;
   align-items: center;
   background-color: var(--secondary-bg-color);
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: none;
+  }
 }
 
 .title {
   font-family: sans-serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
   width: 100%;
   text-align: center;
@@ -84,6 +90,11 @@ body {
 
   &:last-child {
     margin-right: 0;
+  }
+
+  .panelAction {
+    color: var(--dim-text-color);
+    font-size: 1.2rem;
   }
 }
 
