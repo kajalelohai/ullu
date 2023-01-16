@@ -1,102 +1,35 @@
-import { VocabCardPayload, VocabExample } from '../types';
+import { array, object, string } from 'yup';
+import { AssertsShape } from 'yup/lib/object';
 
-const VOCAB_CARDS: VocabCardPayload[] = [
-  {
-    word: 'sehr',
-    meaning: 'very'
-  },
-  {
-    word: 'Tschüss',
-    meaning: 'bye'
-  },
-  {
-    word: 'Einen',
-    meaning: 'one'
-  },
-  {
-    word: 'Darf',
-    meaning: 'may'
-  },
-  {
-    word: 'Wochenende',
-    meaning: 'weekend'
-  },
-  {
-    word: 'Fahre',
-    meaning: 'travel/Drive'
-  },
-  {
-    word: 'Zimmer',
-    meaning: 'room'
-  },
-  {
-    word: 'Proscht',
-    meaning: 'cheers'
-  },
-  {
-    word: 'Arzt',
-    meaning: 'doctor'
-  },
-  {
-    word: 'Hochschule',
-    meaning: 'university'
-  },
-  {
-    word: 'Erwachsene',
-    meaning: 'adult'
-  },
-  {
-    word: 'Flugzeug',
-    meaning: 'airplane'
-  },
-  {
-    word: 'Arm',
-    meaning: 'Arm'
-  },
-  {
-    word: 'Baby',
-    meaning: 'Baby'
-  },
-  {
-    word: 'Rücken',
-    meaning: 'back'
-  },
-  {
-    word: 'Badezimmer',
-    meaning: 'Bathroom'
-  },
-  {
-    word: 'Bett',
-    meaning: 'Bed'
-  },
-  {
-    word: 'Schlaftzimmer',
-    meaning: 'Bedroom'
-  },
-  {
-    word: 'Rindfleisch',
-    meaning: 'Beef'
-  },
-  {
-    word: 'Bier',
-    meaning: 'Beer'
-  },
-  {
-    word: 'Fahrrad',
-    meaning: 'bicycle'
+export const validateVocabBank = async <T>(bank: T): Promise<T> => {
+  const wordSchema = object({
+    article: string().required(),
+    word: string().required()
+  });
+
+  const countableWordSchema = object({
+    singular: wordSchema.required(),
+    plural: wordSchema.required()
+  });
+
+  let nounSchema = object({
+    id: string().required(),
+    meaning: string().required(),
+    gender: string().oneOf(['masculine', 'feminine', 'neuter']).required(),
+    accusative: countableWordSchema.required(),
+    nominative: countableWordSchema.required(),
+    dative: countableWordSchema.required(),
+    genitive: countableWordSchema.required()
+  });
+
+  const vocabSchema = nounSchema;
+
+  const vocabBankSchema = array().of(vocabSchema);
+
+  try {
+    await vocabBankSchema.validate(bank);
+    return bank;
+  } catch (err) {
+    throw err;
   }
-];
-  
-const EXAMPLES: VocabExample[] = [
-  { id: '1', body: 'Der Hund ist sehr gut', words: ['sehr', 'hund'] },
-  { id: '2', body: 'Die tasche ist sehr tuer', words: ['sehr', 'tuer'] },
-  { id: '3', body: 'Das spitzer ist sehr billig', words: ['sehr', 'billig'] }
-];
-
-export const nextCardPayload = async (vocabList: VocabCardPayload[] = VOCAB_CARDS): Promise<VocabCardPayload> => {
-  return vocabList[Math.floor(Math.random() * 100) % VOCAB_CARDS.length];
-};
-
-export const fetchNextExample = async (word: string): Promise<VocabExample> => {
-  return EXAMPLES[Math.floor(Math.random() * 100) % EXAMPLES.length];
 };

@@ -1,18 +1,5 @@
-export interface FlashCardPayload {}
-
-export interface VocabCardPayload extends FlashCardPayload {
-  word: string;
-  meaning: string;
-}
-
-export interface VocabExample {
-  id: string;
-  body: string;
-  words: string[];
-}
-
 export enum Gender {
-  masculine = 'male',
+  masculine = 'masculine',
   feminine = 'feminine',
   neuter = 'neuter'
 }
