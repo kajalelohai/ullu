@@ -1,0 +1,110 @@
+[
+  {
+    "id": "apfel",
+    "meaning": "apple",
+    "gender": "masculine",
+    "nominative": {
+      "singular": {
+        "article": "der",
+        "word": "Apfel"
+      },
+      "plural": {
+        "article": "die",
+        "word": "Äpfel"
+      }
+    },
+    "accusative": {
+      "singular": {
+        "article": "den",
+        "word": "Apfel"
+      },
+      "plural": {
+        "article": "die",
+        "word": "Äpfel"
+      }
+    },
+    "genitive": {
+      "singular": {
+        "article": "des",
+        "word": "Apfels"
+      },
+      "plural": {
+        "article": "der",
+        "word": "Äpfel"
+      }
+    },
+    "dative": {
+      "singular": {
+        "article": "dem",
+        "word": "Apfel"
+      },
+      "plural": {
+        "article": "den",
+        "word": "Äpfeln"
+      }
+    }
+  },
+  {
+    "id": "handy",
+    "meaning": " mobile (phone), cell(ular) phone",
+    "gender": "neuter",
+    "nominative": {
+      "singular": { "article": "das", "word": "Handy" },
+      "plural": { "article": "die", "word": "Handys" }
+    },
+    "accusative": {
+      "singular": { "article": "das", "word": "Handy" },
+      "plural": { "article": "die", "word": "Handys" }
+    },
+    "genitive": {
+      "singular": { "article": "des", "word": "Handys" },
+      "plural": { "article": "der", "word": "Handys" }
+    },
+    "dative": {
+      "singular": { "article": "dem", "word": "Handy" },
+      "plural": { "article": "den", "word": "Handys" }
+    }
+  },
+  {
+    "id": "saft",
+    "meaning": " (fruit) juice",
+    "gender": "masculine",
+    "nominative": {
+      "singular": { "article": "der", "word": "Saft" },
+      "plural": { "article": "die", "word": "Säfte" }
+    },
+    "accusative": {
+      "singular": { "article": "den", "word": "Saft" },
+      "plural": { "article": "die", "word": "Säfte" }
+    },
+    "genitive": {
+      "singular": { "article": "des", "word": "Safts/Saftes" },
+      "plural": { "article": "der", "word": "Säfte" }
+    },
+    "dative": {
+      "singular": { "article": "dem", "word": "Saft" },
+      "plural": { "article": "den", "word": "Säften" }
+    }
+  },
+  {
+    "id": "stift",
+    "meaning": "pin",
+    "gender": "masculine",
+    "nominative": {
+      "singular": { "article": "der", "word": "Stift" },
+      "plural": { "article": "die", "word": "Stifte" }
+    },
+    "accusative": {
+      "singular": { "article": "den", "word": "Stift" },
+      "plural": { "article": "die", "word": "Stifte" }
+    },
+    "genitive": {
+      "singular": { "article": "des", "word": "Stifts/Stiftes" },
+      "plural": { "article": "der", "word": "Stifte" }
+    },
+    "dative": {
+      "singular": { "article": "dem", "word": "Stift" },
+      "plural": { "article": "den", "word": "Stiften" }
+    }
+  }
+]

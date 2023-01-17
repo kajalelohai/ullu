@@ -1,3 +1,4 @@
+import produce from 'immer';
 import createStore from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { LearnedVocab, SessionHistory, Vocab } from './types';
@@ -29,7 +30,10 @@ export default createStore<AppState>()(
       const newBank = bank.filter(
         (vocab, index, arr) => arr.findIndex((v) => v.id === vocab.id) === index
       );
-      set((s) => (s.vocabBank = newBank));
+
+      set((s) => {
+        s.vocabBank = newBank;
+      });
 
       return newBank;
     }

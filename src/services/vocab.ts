@@ -1,5 +1,4 @@
 import { array, object, string } from 'yup';
-import { AssertsShape } from 'yup/lib/object';
 
 export const validateVocabBank = async <T>(bank: T): Promise<T> => {
   const wordSchema = object({
