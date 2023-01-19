@@ -7,13 +7,13 @@ import { validateVocabBank } from '../../services/vocab';
 
 const Home = () => {
   const vocabBankSize = useStore((s) => s.vocabBank.length);
-  const learnedVocabCount = useStore(
-    (s) => s.userProgress.practiceHistory.length
-  );
+  const learnedVocabCount = useStore((s) => s.userProgress.learnedVocab.length);
   const importVocabBank = useStore((s) => s.addToVocabBank);
+  const startNewSession = useStore((s) => s.newSession);
+  const activeSession = useStore((s) => s.activeSession);
 
   const startPractice = useCallback(() => {
-    console.log('Start practice!');
+    startNewSession();
   }, []);
 
   const triggerImportVocab = useCallback(() => {
@@ -35,6 +35,10 @@ const Home = () => {
         console.log('Error during importing vocab bank', err);
       });
   }, []);
+
+  if (activeSession) {
+    return <div>Do {activeSession.pending.length} exercises!</div>;
+  }
 
   return (
     <div>
@@ -70,7 +74,7 @@ const Home = () => {
         />
       </div>
       <div className={s.footer}>
-        <Button onClick={startPractice} disabled>
+        <Button onClick={startPractice} disabled={vocabBankSize === 0}>
           Start Practice
         </Button>
       </div>
