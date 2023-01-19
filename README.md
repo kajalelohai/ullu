@@ -29,7 +29,7 @@ Following widgets have been implemented so far:
 Next stage for this app is to get useful for *me* asap. For that, I have chosen
 these two tasks for immediate execution:
 
-- [ ] Adding Nouns
+- [X] Adding Nouns
 
     We'll limit the app to guessing meaning of nouns for now. And implement
     singular/plural stuff after that, and thereafter more mature grammar. Adding
