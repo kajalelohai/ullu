@@ -1,18 +1,19 @@
 import createStore from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { persist } from 'zustand/middleware';
-import { LearnedVocab, Vocab } from './models/Vocab';
-import { Session, SessionHistory, newSession } from './models/Session';
+import { Vocab } from './models/Vocab';
+import { Session, SessionHistory, newSession, Learned } from './models/Session';
 
 export interface AppState {
   vocabBank: Vocab[];
   activeSession?: Session<Vocab>;
   userProgress: {
     history: SessionHistory[];
-    learnedVocab: LearnedVocab[];
+    learnedVocab: Learned<Vocab>[];
   };
   addToVocabBank: (newVocab: Vocab[]) => Promise<Vocab[]>;
   newSession: () => Promise<void>;
+  clearActiveSession: () => Promise<void>;
 }
 
 export default createStore<AppState>()(
@@ -41,6 +42,11 @@ export default createStore<AppState>()(
         const session = await newSession<Vocab>(bank, []);
         set((s) => {
           s.activeSession = session;
+        });
+      },
+      clearActiveSession: async () => {
+        set((s) => {
+          s.activeSession = undefined;
         });
       }
     })),

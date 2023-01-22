@@ -1,5 +1,3 @@
-import { Difficulty, SessionHistory } from "./Session";
-
 export enum Gender {
   masculine = 'masculine',
   feminine = 'feminine',
