@@ -1,6 +1,7 @@
 [
   {
     "id": "apfel",
+    "display": "Apfel",
     "meaning": "apple",
     "gender": "masculine",
     "nominative": {
@@ -46,6 +47,7 @@
   },
   {
     "id": "handy",
+    "display": "Handy",
     "meaning": " mobile (phone), cell(ular) phone",
     "gender": "neuter",
     "nominative": {
@@ -67,6 +69,7 @@
   },
   {
     "id": "saft",
+    "display": "Saft",
     "meaning": " (fruit) juice",
     "gender": "masculine",
     "nominative": {
@@ -88,6 +91,7 @@
   },
   {
     "id": "stift",
+    "display": "Stift",
     "meaning": "pin",
     "gender": "masculine",
     "nominative": {

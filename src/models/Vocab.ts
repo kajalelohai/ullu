@@ -22,8 +22,8 @@ export interface CountableWord {
 }
 
 export type Noun = {
-  // TODO Add `display`, which is id but preserves case
   id: string;
+  display: string;
   // TODO move meaning to its own type as a `Translation`
   meaning: string;
   gender: Gender;

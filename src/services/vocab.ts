@@ -13,6 +13,7 @@ export const validateVocabBank = async <T>(bank: T): Promise<T> => {
 
   let nounSchema = object({
     id: string().required(),
+    display: string().required(),
     meaning: string().required(),
     gender: string().oneOf(['masculine', 'feminine', 'neuter']).required(),
     accusative: countableWordSchema.required(),

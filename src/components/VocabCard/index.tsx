@@ -1,79 +1,42 @@
 import * as styles from './styles.module.scss';
-import { useEffect } from 'react';
-import useStore from '../../store';
-import { FileUpload } from './fileUpload';
+import { FC, useState } from 'react';
+import { Vocab } from '../../models/Vocab';
 
-export function VocabCard() {
-  const [word, nextWord] = useStore((state) => [
-    state.vocab.word,
-    state.vocab.nextVocabCard
-  ]);
-  const [example, nextExample] = useStore((s) => [
-    s.vocab.example,
-    s.vocab.nextExample
-  ]);
-  const [meaning, isMeaning] = useStore((state) => [
-    state.vocab.meaning,
-    state.vocab.displayMeaning
-  ]);
-  const showMeaning = useStore((s) => s.vocab.showMeaning);
+export interface VocabCardProps {
+  vocab: Vocab;
+}
 
-  useEffect(() => {
-    nextWord();
-  }, []);
+const VocabCard: FC<VocabCardProps> = ({ vocab }) => {
+  const [displayMeaning, setDisplayMeaning] = useState(false);
 
-  if (!word) {
-    return <div className={styles.error}>Something went wrong.</div>;
-  }
+  const showMeaning = () => {
+    setDisplayMeaning(!displayMeaning);
+  };
 
   return (
-    <div id="primary" className={styles.card}>
-      <div key={word} className={styles.cardContent}>
-        <div className={styles.flippableCardText}>
-          {isMeaning ? (
-            <span
-              className={styles.cardTextBack}
-              onClick={() => {
-                showMeaning();
-              }}
-            >
-              {meaning}
+    <div className={styles.cardContainer}>
+      <div className={styles.card}>
+        <div className={styles.flippableCard}>
+          {displayMeaning ? (
+            <span className={styles.cardTextBack} onClick={showMeaning}>
+              {vocab.meaning}
             </span>
           ) : (
-            <span
-              className={styles.cardTextFront}
-              onClick={() => {
-                showMeaning();
-              }}
-            >
-              {word}
+            <span className={styles.cardTextFront} onClick={showMeaning}>
+              {vocab.display}
             </span>
           )}
         </div>
-        <FileUpload />
         <div className={styles.line} />
-        <div className={styles.clickableText} onClick={() => nextExample()}>
-          {example ? 'Show another example' : 'Show example'}
-        </div>
-        <div className={styles.additionalDetails}>
-          {' '}
-          {example ? example : null}
-        </div>
       </div>
-
       <div className={styles.footer}>
-        <button className={styles.footerButtons} onClick={() => nextWord()}>
-          Easy
-        </button>
-        <button className={styles.footerButtons} onClick={() => nextWord()}>
-          Normal
-        </button>
-        <button className={styles.footerButtons} onClick={() => nextWord()}>
-          Hard
-        </button>
+        <button className={styles.footerButtons}>Easy</button>
+        <button className={styles.footerButtons}>Normal</button>
+        <button className={styles.footerButtons}>Hard</button>
       </div>
-
       <div className={styles.note}>How hard was guessing it?</div>
     </div>
   );
-}
+};
+
+export default VocabCard;

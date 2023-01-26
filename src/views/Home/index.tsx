@@ -4,8 +4,7 @@ import TextPanel from '../../components/Panels/Text';
 import useStore from '../../store';
 import Button, { ButtonType } from '../../components/Button';
 import { validateVocabBank } from '../../services/vocab';
-import SessionPlayer from '../../components/SessionPlayer';
-import { Vocab } from '../../models/Vocab';
+import SessionPlayer from '../SessionPlayer';
 
 const Home = () => {
   const vocabBankSize = useStore((s) => s.vocabBank.length);
@@ -13,7 +12,6 @@ const Home = () => {
   const importVocabBank = useStore((s) => s.addToVocabBank);
   const startNewSession = useStore((s) => s.newSession);
   const activeSession = useStore((s) => s.activeSession);
-  const clearActiveSession = useStore((s) => s.clearActiveSession);
 
   const startPractice = useCallback(() => {
     startNewSession();
@@ -40,10 +38,7 @@ const Home = () => {
   }, []);
 
   if (activeSession) {
-    const Player = SessionPlayer<Vocab>;
-    return (
-      <Player session={activeSession} onClearSession={clearActiveSession} />
-    );
+    return <SessionPlayer />;
   }
 
   return (
