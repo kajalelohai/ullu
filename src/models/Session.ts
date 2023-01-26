@@ -1,5 +1,9 @@
 import { v4 as uuid } from 'uuid';
 
+export interface Identifiable {
+  id: string;
+}
+
 export interface Learned<T> {
   self: T;
   latestSession: SessionHistory;
@@ -22,8 +26,8 @@ export type SessionId = string;
 // TODO: Session shouldn't accept a type argument
 export interface Session<T> {
   id: SessionId;
-  pending: Exercise<T>[];
-  done: Exercise<T>[];
+  pending: { [id: string]: Exercise<T> };
+  done: { [id: string]: Exercise<T> };
 }
 
 export interface SessionHistory {
@@ -43,15 +47,17 @@ export const exerciseXp = <T>(ex: Exercise<T>): Number => {
   return 42;
 };
 
-export const newSession = async <T>(
-  bank: T[],
-  learned: Learned<T>[]
+export const newSession = async <T extends Identifiable>(
+  bank: { [id: string]: T },
+  learned: { [id: string]: Learned<T> }
 ): Promise<Session<T>> => {
-  const pending = bank.slice(0, bank.length).map(newExcercise);
+  const pending = Object.values(bank)
+    .map(newExcercise)
+    .reduce((a, v) => ({ ...a, [v.self.id]: v }), {});
 
   return {
     id: uuid(),
     pending,
-    done: []
+    done: {}
   };
 };

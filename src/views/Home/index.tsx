@@ -7,8 +7,10 @@ import { validateVocabBank } from '../../services/vocab';
 import SessionPlayer from '../SessionPlayer';
 
 const Home = () => {
-  const vocabBankSize = useStore((s) => s.vocabBank.length);
-  const learnedVocabCount = useStore((s) => s.userProgress.learnedVocab.length);
+  const vocabBankSize = useStore((s) => Object.keys(s.vocabBank).length);
+  const learnedVocabCount = useStore(
+    (s) => Object.keys(s.userProgress.learnedVocab).length
+  );
   const importVocabBank = useStore((s) => s.addToVocabBank);
   const startNewSession = useStore((s) => s.newSession);
   const activeSession = useStore((s) => s.activeSession);

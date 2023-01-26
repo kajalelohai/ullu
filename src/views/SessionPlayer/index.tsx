@@ -5,11 +5,17 @@ import VocabCard from '../../components/VocabCard';
 import useStore from '../../store';
 
 function SessionPlayer() {
-  const session = useStore((s) => s.activeSession);
   const clearSession = useStore((s) => s.clearActiveSession);
+  const finishSession = useStore((s) => s.finishActiveSession);
+  const solveExercise = useStore((s) => s.solveExercise);
+  const exercise = useStore((s) => {
+    const pendingExs = Object.values(s.activeSession?.session.pending || {});
+    return pendingExs.length ? pendingExs[0] : null;
+  });
 
-  if (!session) {
-    throw new Error('No session to play 😭');
+  if (!exercise) {
+    finishSession();
+    return null;
   }
 
   return (
@@ -20,7 +26,14 @@ function SessionPlayer() {
         </Button>
       </nav>
 
-      <VocabCard vocab={session.pending[0].self} />
+      <article className={s.playArea}>
+        <VocabCard
+          onDone={(d) => {
+            solveExercise(exercise, d);
+          }}
+          vocab={exercise.self}
+        />
+      </article>
 
       <footer className={s.footer}></footer>
     </section>

@@ -23,7 +23,6 @@ export interface CountableWord {
 
 export type Noun = {
   id: string;
-  display: string;
   // TODO move meaning to its own type as a `Translation`
   meaning: string;
   gender: Gender;
