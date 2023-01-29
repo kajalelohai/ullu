@@ -1,11 +1,11 @@
 import * as styles from './styles.module.scss';
 import { FC, useCallback, useState } from 'react';
 import { Vocab } from '../../models/Vocab';
-import { Difficulty } from '../../models/Session';
+import { SuperMemoGrade } from 'supermemo';
 
 export interface VocabCardProps {
   vocab: Vocab;
-  onDone: (difficulty: Difficulty) => void;
+  onDone: (grade: SuperMemoGrade) => void;
 }
 
 const VocabCard: FC<VocabCardProps> = ({ vocab, onDone }) => {
@@ -32,22 +32,13 @@ const VocabCard: FC<VocabCardProps> = ({ vocab, onDone }) => {
         <div className={styles.line} />
       </div>
       <div className={styles.footer}>
-        <button
-          onClick={() => onDone(Difficulty.EASY)}
-          className={styles.footerButtons}
-        >
+        <button onClick={() => onDone(1)} className={styles.footerButtons}>
           Easy
         </button>
-        <button
-          onClick={() => onDone(Difficulty.NORMAL)}
-          className={styles.footerButtons}
-        >
+        <button onClick={() => onDone(3)} className={styles.footerButtons}>
           Normal
         </button>
-        <button
-          onClick={() => onDone(Difficulty.HARD)}
-          className={styles.footerButtons}
-        >
+        <button onClick={() => onDone(5)} className={styles.footerButtons}>
           Hard
         </button>
       </div>

@@ -9,11 +9,15 @@ function SessionPlayer() {
   const finishSession = useStore((s) => s.finishActiveSession);
   const solveExercise = useStore((s) => s.solveExercise);
   const exercise = useStore((s) => {
-    const pendingExs = Object.values(s.activeSession?.session.pending || {});
-    return pendingExs.length ? pendingExs[0] : null;
+    const exId = s.activeSession?.exerciseIds[0];
+    return exId ? s.exercises[exId] : null;
+  });
+  const vocab = useStore((s) => {
+    return exercise ? s.vocabBank[exercise.itemId] : null;
   });
 
-  if (!exercise) {
+  if (!exercise || !vocab) {
+    // Really hacky way of finishing a session
     finishSession();
     return null;
   }
@@ -29,9 +33,9 @@ function SessionPlayer() {
       <article className={s.playArea}>
         <VocabCard
           onDone={(d) => {
-            solveExercise(exercise, d);
+            solveExercise(exercise.itemId, d);
           }}
-          vocab={exercise.self}
+          vocab={vocab}
         />
       </article>
 

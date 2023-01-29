@@ -27,6 +27,7 @@ body {
     --secondary-bg-color: #eeeeee;
     --cta-text-color: #22222299;
     --dim-text-color: #888;
+    --error-text-color: #f12;
     --border-color: var(--cta-text-color);
     --bs-text-opacity: 1;
   }
@@ -40,6 +41,7 @@ body {
     --secondary-bg-color: #444;
     --cta-text-color: #888;
     --dim-text-color: #bbbbbb88;
+    --error-text-color: #f12;
     --border-color: var(--cta-text-color);
     --bs-text-opacity: 1;
   }
@@ -104,7 +106,14 @@ body {
 
 .footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 4rem;
+}
+
+.error {
+  color: var(--error-text-color);
+  font-size: 1.2rem;
+  text-align: center;
 }

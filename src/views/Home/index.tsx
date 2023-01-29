@@ -8,12 +8,11 @@ import SessionPlayer from '../SessionPlayer';
 
 const Home = () => {
   const vocabBankSize = useStore((s) => Object.keys(s.vocabBank).length);
-  const learnedVocabCount = useStore(
-    (s) => Object.keys(s.userProgress.learnedVocab).length
-  );
+  const learnedVocabCount = useStore((s) => Object.keys(s.exercises).length);
   const importVocabBank = useStore((s) => s.addToVocabBank);
-  const startNewSession = useStore((s) => s.newSession);
+  const startNewSession = useStore((s) => s.startNewSession);
   const activeSession = useStore((s) => s.activeSession);
+  const fatalError = useStore((s) => s.newSessionError);
 
   const startPractice = useCallback(() => {
     startNewSession();
@@ -77,9 +76,13 @@ const Home = () => {
         />
       </div>
       <div className={s.footer}>
-        <Button onClick={startPractice} disabled={vocabBankSize === 0}>
+        <Button
+          onClick={startPractice}
+          disabled={Boolean(fatalError || vocabBankSize === 0)}
+        >
           Start Practice
         </Button>
+        {fatalError ? <div className={s.error}>{fatalError}</div> : null}
       </div>
     </div>
   );
