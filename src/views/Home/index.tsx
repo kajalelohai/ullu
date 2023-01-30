@@ -5,6 +5,8 @@ import useStore from '../../store';
 import Button, { ButtonType } from '../../components/Button';
 import { validateVocabBank } from '../../services/vocab';
 import SessionPlayer from '../SessionPlayer';
+import isBefore from 'date-fns/isBefore';
+import formatRelative from 'date-fns/formatRelative';
 
 const Home = () => {
   const vocabBankSize = useStore((s) => Object.keys(s.vocabBank).length);
@@ -13,6 +15,16 @@ const Home = () => {
   const startNewSession = useStore((s) => s.startNewSession);
   const activeSession = useStore((s) => s.activeSession);
   const fatalError = useStore((s) => s.newSessionError);
+  const nextSessionOn = useStore((s) => {
+    const exercises = Object.values(s.exercises);
+    if (!exercises.length) return;
+    const nextDue: Date = exercises.reduce(
+      (nextDue, ex) => (isBefore(nextDue, ex.due) ? nextDue : ex.due),
+      exercises[0].due
+    );
+
+    return nextDue;
+  });
 
   const startPractice = useCallback(() => {
     startNewSession();
@@ -49,36 +61,50 @@ const Home = () => {
       </nav>
 
       <div className={s.container}>
-        <TextPanel
-          className={s.panel}
-          text={String(vocabBankSize)}
-          subtext={'Total Words'}
-        >
-          <Button
-            className={s.panelAction}
-            type={ButtonType.link}
-            onClick={triggerImportVocab}
+        <div className={s.panels}>
+          <TextPanel
+            className={s.panel}
+            text={String(vocabBankSize)}
+            subtext={'Total Words'}
           >
-            <label htmlFor="vocab-bank">Add more</label>
-            <input
-              style={{ display: 'none' }}
-              name="vocab-bank"
-              type="file"
-              accept="application/json"
-              onChange={importVocab}
-            />
-          </Button>
-        </TextPanel>
-        <TextPanel
-          className={s.panel}
-          text={String(learnedVocabCount)}
-          subtext={'Learned Words'}
-        />
+            <Button
+              className={s.panelAction}
+              type={ButtonType.link}
+              onClick={triggerImportVocab}
+            >
+              <label htmlFor="vocab-bank">Add more</label>
+              <input
+                style={{ display: 'none' }}
+                name="vocab-bank"
+                type="file"
+                accept="application/json"
+                onChange={importVocab}
+              />
+            </Button>
+          </TextPanel>
+          <TextPanel
+            className={s.panel}
+            text={String(learnedVocabCount)}
+            subtext={'Learned Words'}
+          />
+        </div>
+        <div className={s.info}>
+          {nextSessionOn ? (
+            <p>
+              Next practice session is due{' '}
+              <b>{formatRelative(nextSessionOn, new Date())}</b>
+            </p>
+          ) : null}
+        </div>
       </div>
       <div className={s.footer}>
         <Button
           onClick={startPractice}
-          disabled={Boolean(fatalError || vocabBankSize === 0)}
+          disabled={Boolean(
+            fatalError ||
+              vocabBankSize === 0 ||
+              (nextSessionOn && !isBefore(nextSessionOn, new Date()))
+          )}
         >
           Start Practice
         </Button>

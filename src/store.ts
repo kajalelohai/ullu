@@ -2,7 +2,12 @@ import createStore from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { Vocab } from '~src/models/Vocab';
-import { Session, newSession, Exercise } from '~src/models/Session';
+import {
+  Session,
+  newSession,
+  Exercise,
+  solveExercise
+} from '~src/models/Session';
 import { Record } from '~src/types';
 import { SuperMemoGrade } from 'supermemo';
 import { recordify } from './utils';
@@ -87,7 +92,7 @@ export default createStore<AppState>()(
             throw new Error('Exercise not found in current session.');
           }
 
-          exercise.grade = grade;
+          state.exercises[exId] = solveExercise(exercise, grade);
           state.activeSession.exerciseIds =
             state.activeSession.exerciseIds.filter((id) => id !== exId);
         });
@@ -95,7 +100,18 @@ export default createStore<AppState>()(
     })),
     {
       name: 'ullu-da-patha',
-      storage: createJSONStorage(() => sessionStorage)
+      storage: createJSONStorage(() => sessionStorage),
+      onRehydrateStorage: () => {
+        return (state) => {
+          if (!state) return;
+          state.exercises = Object.fromEntries(
+            Object.entries(state.exercises).map(([k, v]) => [
+              k,
+              { ...v, due: new Date(v.due) }
+            ])
+          );
+        };
+      }
     }
   )
 );

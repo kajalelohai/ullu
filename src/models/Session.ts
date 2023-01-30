@@ -1,8 +1,8 @@
+import { addDays } from 'date-fns';
 import isBefore from 'date-fns/isBefore';
-import { SuperMemoGrade, SuperMemoItem } from 'supermemo';
+import { supermemo, SuperMemoGrade, SuperMemoItem } from 'supermemo';
 import { v4 as uuid } from 'uuid';
 import { Identifiable, Record } from '~src/types';
-import { recordify } from '~src/utils';
 
 export interface Exercisable {
   memo: SuperMemoItem;
@@ -31,6 +31,19 @@ const newExercise = <T extends Identifiable>(item: T): Exercise => {
     },
     grade: 3,
     due: new Date()
+  };
+};
+
+export const solveExercise = (
+  ex: Exercise,
+  grade: SuperMemoGrade
+): Exercise => {
+  const newMemo = supermemo(ex.memo, grade);
+  return {
+    ...ex,
+    due: addDays(ex.due, newMemo.interval),
+    memo: newMemo,
+    grade
   };
 };
 
