@@ -36,8 +36,8 @@ these two tasks for immediate execution:
     nouns don't need a UI (since building good UIs is super time-consuming), we
     just need the nouns in our world somehow.
 
-- [ ] Tracking progress
+- [X] Tracking progress
 
     Once the nouns are in, I want the ability to start practicing remembering
     them. So a way of making and tracking progress should happen next. This will
-    make the app useful for me, and we'll how to evolve from there.
+    make the app useful for me, and we'll know how to evolve from there.
