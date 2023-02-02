@@ -1,5 +1,5 @@
 import * as styles from './styles.module.scss';
-import { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { Vocab } from '../../models/Vocab';
 import { SuperMemoGrade } from 'supermemo';
 
@@ -13,6 +13,14 @@ const VocabCard: FC<VocabCardProps> = ({ vocab, onDone }) => {
 
   const showMeaning = useCallback(() => {
     setDisplayMeaning(!displayMeaning);
+  }, [displayMeaning]);
+
+  const onSubmitResult = useCallback((rank: SuperMemoGrade) => {
+    return (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      onDone(rank);
+      setDisplayMeaning(false);
+    }
   }, [displayMeaning]);
 
   return (
@@ -32,13 +40,13 @@ const VocabCard: FC<VocabCardProps> = ({ vocab, onDone }) => {
         <div className={styles.line} />
       </div>
       <div className={styles.footer}>
-        <button onClick={() => onDone(1)} className={styles.footerButtons}>
+        <button onClick={onSubmitResult(1)} className={styles.footerButtons}>
           Easy
         </button>
-        <button onClick={() => onDone(3)} className={styles.footerButtons}>
+        <button onClick={onSubmitResult(3)} className={styles.footerButtons}>
           Normal
         </button>
-        <button onClick={() => onDone(5)} className={styles.footerButtons}>
+        <button onClick={onSubmitResult(5)} className={styles.footerButtons}>
           Hard
         </button>
       </div>
