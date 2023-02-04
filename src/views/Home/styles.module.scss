@@ -90,6 +90,7 @@ body {
 
 .panels {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
@@ -126,4 +127,19 @@ body {
   color: var(--error-text-color);
   font-size: 1.2rem;
   text-align: center;
+}
+
+@media screen and (max-width: 420px) {
+  .panels {
+    flex-direction: column;
+  }
+
+  .panel {
+    margin-right: 0;
+    margin-bottom: 1.4rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

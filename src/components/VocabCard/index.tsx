@@ -1,7 +1,8 @@
-import * as styles from './styles.module.scss';
+import * as s from './styles.module.scss';
 import React, { FC, useCallback, useState } from 'react';
 import { Vocab } from '../../models/Vocab';
 import { SuperMemoGrade } from 'supermemo';
+import Button from '../Button';
 
 export interface VocabCardProps {
   vocab: Vocab;
@@ -15,42 +16,42 @@ const VocabCard: FC<VocabCardProps> = ({ vocab, onDone }) => {
     setDisplayMeaning(!displayMeaning);
   }, [displayMeaning]);
 
-  const onSubmitResult = useCallback((rank: SuperMemoGrade) => {
-    return (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      onDone(rank);
-      setDisplayMeaning(false);
-    }
-  }, [displayMeaning]);
+  const onSubmitResult = useCallback(
+    (rank: SuperMemoGrade) => {
+      return (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        onDone(rank);
+        setDisplayMeaning(false);
+      };
+    },
+    [displayMeaning]
+  );
 
   return (
-    <div className={styles.cardContainer}>
-      <div className={styles.card}>
-        <div className={styles.flippableCard}>
-          {displayMeaning ? (
-            <span className={styles.cardTextBack} onClick={showMeaning}>
-              {vocab.meaning}
-            </span>
-          ) : (
-            <span className={styles.cardTextFront} onClick={showMeaning}>
-              {`${vocab.nominative.singular.article} ${vocab.nominative.singular.word}`}
-            </span>
-          )}
-        </div>
-        <div className={styles.line} />
+    <div className={s.cardContainer}>
+      <div className={s.flippableCard}>
+        {displayMeaning ? (
+          <div className={s.cardTextBack} onClick={showMeaning}>
+            {vocab.meaning}
+          </div>
+        ) : (
+          <div className={s.cardTextFront} onClick={showMeaning}>
+            {`${vocab.nominative.singular.article} ${vocab.nominative.singular.word}`}
+          </div>
+        )}
       </div>
-      <div className={styles.footer}>
-        <button onClick={onSubmitResult(1)} className={styles.footerButtons}>
+      <div className={s.footer}>
+        <Button onClick={onSubmitResult(1)} className={s.footerButtons}>
           Easy
-        </button>
-        <button onClick={onSubmitResult(3)} className={styles.footerButtons}>
+        </Button>
+        <Button onClick={onSubmitResult(3)} className={s.footerButtons}>
           Normal
-        </button>
-        <button onClick={onSubmitResult(5)} className={styles.footerButtons}>
+        </Button>
+        <Button onClick={onSubmitResult(5)} className={s.footerButtons}>
           Hard
-        </button>
+        </Button>
       </div>
-      <div className={styles.note}>How hard was guessing it?</div>
+      <div className={s.note}>How hard was guessing it?</div>
     </div>
   );
 };

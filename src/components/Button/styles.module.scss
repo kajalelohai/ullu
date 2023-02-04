@@ -1,13 +1,13 @@
 .btn {
   font-size: 1.6rem;
   cursor: pointer;
-  margin: 1rem;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease-in-out;
-  background-color: var(--main-text-color);
-  color: var(--main-bg-color);
+  margin: 0rem 4rem;
+  padding: 1.3rem 5.5rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid var(--main-text-color);
+  background: var(--main-bg-color);
+  color: var(--main-text-color);
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     opacity: 0.9;
@@ -39,5 +39,11 @@
   }
   &:active {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .btn {
+    margin: 0.4rem 0rem;
   }
 }

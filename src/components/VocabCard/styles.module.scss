@@ -6,30 +6,40 @@
   padding: 17rem 0em;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--secondary-bg-color);
-  border-radius: 0.5rem;
-}
-
 .flippableCard {
   display: flex;
-  cursor: pointer;
+  flex-wrap: wrap;
+  background-color: var(--secondary-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 4rem;
+}
+
+.flippableCard .cardTextFront,
+.cardTextBack {
+  height: 20rem;
+  width: 10em;
 }
 
 .cardTextFront,
 .cardTextBack {
-  font-size: 5rem;
+  text-align: center;
+  display: flex;
+  flex-wrap: inherit;
+  font-size: 4rem;
   color: var(--main-bg-color);
-  padding: 2.5rem;
+  transform-style: preserve-3d;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
 }
 
 .cardTextBack {
-  opacity: 0.7;
-  transition: all 0.52s ease-in-out;
+  opacity: 0.6;
+  transition: opacity 0.9s ease-out;
 }
 
 .line {
@@ -58,24 +68,9 @@
 
 .footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding-top: 5.5rem;
-}
-
-.footerButtons {
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin: 0rem 4rem;
-  padding: 1.3rem 5.5rem;
-  border: 0.2rem solid var(--main-text-color);
-  border-radius: 0.5rem;
-  background: var(--main-bg-color);
-  color: var(--main-text-color);
-  transition: all 0.1s ease-in-out;
-}
-
-.footerButtons:hover {
-  opacity: 0.5;
 }
 
 .note {
@@ -88,23 +83,14 @@
   color: red;
 }
 
-@media screen and (max-width: 75rem) {
-  #primary {
-    width: 95%;
-    margin: 0 auto;
+@media screen and (max-width: 420px) {
+  .footer {
+    flex-direction: column;
   }
-}
 
-/* Media Queries: Tablet Landscape */
-@media screen and (max-width: 66.25rem) {
-  #primary {
-    width: 67%;
-  }
-}
-
-/* Media Queries: Tabled Portrait */
-@media screen and (max-width: 48rem) {
-  #primary {
-    width: 100%;
+  .cardTextFront,
+  .cardTextBack {
+    max-width: 7em;
+    max-height: 8em;
   }
 }

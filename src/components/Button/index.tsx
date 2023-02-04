@@ -9,7 +9,7 @@ export interface ButtonProps {
   className?: string;
   disabled?: boolean;
   type?: ButtonType;
-  onClick: () => void;
+  onClick: ((event: React.MouseEvent<HTMLButtonElement>) => void);
   children: React.ReactNode;
 }
 
