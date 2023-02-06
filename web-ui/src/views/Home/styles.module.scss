@@ -79,6 +79,18 @@ body {
   width: 100%;
   text-align: center;
   justify-content: center;
+  padding-left: 11.9rem;
+}
+
+.navLink {
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-basis: 14rem;
+  color: var(--main-text-color);
+  cursor: pointer;
 }
 
 .container {
@@ -130,6 +142,12 @@ body {
 }
 
 @media screen and (max-width: 420px) {
+  .title {
+    padding-left: 10rem;
+  }
+  .navLink {
+    flex-basis: 15.28rem;
+  }
   .panels {
     flex-direction: column;
   }

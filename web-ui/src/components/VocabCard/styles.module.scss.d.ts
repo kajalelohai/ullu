@@ -1,5 +1,4 @@
 export const additionalDetails: string;
-export const card: string;
 export const cardContainer: string;
 export const cardTextBack: string;
 export const cardTextFront: string;
@@ -7,7 +6,5 @@ export const clickableText: string;
 export const error: string;
 export const flippableCard: string;
 export const footer: string;
-export const footerButtons: string;
 export const line: string;
 export const note: string;
-export const primary: string;

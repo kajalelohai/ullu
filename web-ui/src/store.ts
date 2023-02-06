@@ -1,7 +1,7 @@
 import createStore from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { Vocab } from '~src/models/Vocab';
+import { Vocab, Word } from '~src/models/Vocab';
 import {
   Session,
   newSession,
@@ -23,6 +23,7 @@ export interface AppState {
   clearActiveSession: () => Promise<void>;
   finishActiveSession: () => Promise<void>;
   solveExercise: (exId: string, grade: SuperMemoGrade) => Promise<void>;
+  word?: Word;
 }
 
 export default createStore<AppState>()(

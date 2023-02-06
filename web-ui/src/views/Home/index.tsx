@@ -58,6 +58,10 @@ const Home = () => {
     <div>
       <nav className={s.topNav}>
         <div className={s.title}>ULLU</div>
+        <a className={s.navLink} href="/new-word">
+          {' '}
+          + Words
+        </a>
       </nav>
 
       <div className={s.container}>

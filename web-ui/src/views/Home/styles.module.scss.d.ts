@@ -2,6 +2,7 @@ export const container: string;
 export const error: string;
 export const footer: string;
 export const info: string;
+export const navLink: string;
 export const panel: string;
 export const panelAction: string;
 export const panels: string;
