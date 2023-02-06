@@ -28,6 +28,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-router-dom": "^6.8.1",
     "supermemo": "^2.0.17",
     "uuid": "^9.0.0",
     "yup": "^0.32.11",
