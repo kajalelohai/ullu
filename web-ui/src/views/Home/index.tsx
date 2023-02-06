@@ -7,6 +7,7 @@ import { validateVocabBank } from '../../services/vocab';
 import SessionPlayer from '../SessionPlayer';
 import isBefore from 'date-fns/isBefore';
 import formatRelative from 'date-fns/formatRelative';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const vocabBankSize = useStore((s) => Object.keys(s.vocabBank).length);
@@ -58,10 +59,9 @@ const Home = () => {
     <div>
       <nav className={s.topNav}>
         <div className={s.title}>ULLU</div>
-        <a className={s.navLink} href="/new-word">
-          {' '}
+        <Link className={s.navLink} to="/new-word">
           + Words
-        </a>
+        </Link>
       </nav>
 
       <div className={s.container}>

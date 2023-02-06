@@ -3,6 +3,7 @@ import { BsChevronLeft } from 'react-icons/bs';
 import Button from '../../components/Button';
 import VocabCard from '../../components/VocabCard';
 import useStore from '../../store';
+import { Link } from 'react-router-dom';
 
 function SessionPlayer() {
   const clearSession = useStore((s) => s.clearActiveSession);
@@ -26,7 +27,7 @@ function SessionPlayer() {
     <section>
       <nav className={s.topNav}>
         <Button className={s.backBtn} onClick={clearSession}>
-          <BsChevronLeft />
+        <Link to="/"><BsChevronLeft /></Link>
         </Button>
       </nav>
 
