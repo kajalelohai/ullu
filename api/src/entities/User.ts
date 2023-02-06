@@ -9,13 +9,17 @@ export class User extends BaseEntity {
   readonly id: string;
 
   @Field()
-  @Column()
+  @Column({ unique: true })
   email: string;
 
-  @Field({ nullable: true })
-  @Column({ nullable: true })
-  nickname?: string;
+  @Field()
+  @Column()
+  username: string;
 
   @Column()
   password: string;
+
+  @Field(type => [String])
+  @Column("simple-array")
+  roles: string[];
 }
