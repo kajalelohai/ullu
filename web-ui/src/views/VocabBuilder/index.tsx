@@ -6,58 +6,52 @@ import * as s from './styles.module.scss';
 
 export default function VocabBuilder() {
   return (
-    <section>
-      <nav className={s.topNav}>
-        <Button className={s.backBtn} onClick={() => {}}>
-          <Link to="/">
-            <BsChevronLeft />
-          </Link>
-        </Button>
-      </nav>
+    <section className={s.formContainer}>
       <article className={s.formPanel}>
         <h1 className={s.header}>Add Word Details</h1>
-        <Form method="post" id="contact-form">
-          <p>
-            <label htmlFor="word">Word</label>
+        <Form method="post" className={s.formDetails}>
+          <div className={s.row}>
+            <label htmlFor="word" className={s.label}>Word</label>
             <input
               placeholder="Word"
               aria-label="word"
               type="text"
               name="word"
+              className={s.inputField}
             />
-          </p>
-          <label>
-            <label htmlFor="meaning">Meaning</label>
-            <input type="text" name="meaning" placeholder="meaning" />
-          </label>
-          <label>
-            <label htmlFor="gender">Gender</label>
+          </div>
+          <div className={s.row}>
+            <label htmlFor="meaning" className={s.label}>Meaning</label>
+            <input type="text" name="meaning" placeholder="meaning" className={s.inputField}/>
+          </div>
+          <div className={s.row}>
+            <label htmlFor="gender" className={s.label}>Gender</label>
             <div>
               <input type="radio" value="Male" name="gender" /> Male
               <input type="radio" value="Female" name="gender" /> Female
               <input type="radio" value="Neuter" name="gender" /> Neuter
             </div>
-          </label>
-          <label>
-            <h3>Nominative Case</h3>
-            <InputField word="Apfel" />
-          </label>
-          <label>
+          </div>
+          <div className={s.row}>
+            <h4>Nominative Case</h4>
+            <InputField word="Apfel"/>
+          </div>
+          <div className={s.row}>
             <h3>Accusative Case</h3>
             <InputField word="Apfel" />
-          </label>
-          <label>
+          </div>
+          <div className={s.row}>
             <h3>Genitive Case</h3>
             <InputField word="Apfel" />
-          </label>
-          <label>
+          </div>
+          <div className={s.row}>
             <h3>Dative Case</h3>
             <InputField word="Apfel" />
-          </label>
-          <p>
+          </div>
+          <div>
             <button type="submit">Save</button>
             <button type="button">Cancel</button>
-          </p>
+          </div>
         </Form>
       </article>
     </section>
