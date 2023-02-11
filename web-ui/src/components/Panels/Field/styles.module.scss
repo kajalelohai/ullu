@@ -19,12 +19,11 @@
 }
 
 @media screen and (max-width: $sm) {
-  .caseInputSet {
-    max-width: 22.9rem;
+  .inputFieldSet {
+    flex-direction: column;
   }
-
-  .selectInputSet {
-    max-width: 10rem;
-    margin-left: 2rem;
+  
+  .caseInputSet {
+   margin-left: 0rem;
   }
 }

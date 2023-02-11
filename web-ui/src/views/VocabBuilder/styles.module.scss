@@ -40,6 +40,9 @@
 }
 
 .formSection {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   margin-top: 1rem;
 }
 
@@ -91,12 +94,13 @@
 }
 
 @media screen and (max-width: $sm) {
- .formPanel {
-    padding: 2rem;
- } 
+  .formFooter {
+    display: flex;
+    justify-content: space-around;
 
- .formFooter {
-    justify-content: space-between;
+    .formSubmit {
+      margin-left: 0rem;
+    }
   }
 }
  
