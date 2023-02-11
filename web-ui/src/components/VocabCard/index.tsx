@@ -41,13 +41,13 @@ const VocabCard: FC<VocabCardProps> = ({ vocab, onDone }) => {
         )}
       </div>
       <div className={s.footer}>
-        <Button onClick={onSubmitResult(1)} className={s.footerButtons}>
+        <Button onClick={onSubmitResult(1)}>
           Easy
         </Button>
-        <Button onClick={onSubmitResult(3)} className={s.footerButtons}>
+        <Button onClick={onSubmitResult(3)}>
           Normal
         </Button>
-        <Button onClick={onSubmitResult(5)} className={s.footerButtons}>
+        <Button onClick={onSubmitResult(5)}>
           Hard
         </Button>
       </div>

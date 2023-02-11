@@ -1,29 +1,33 @@
 .formContainer {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: var(--main-bg-color);
 }
 
 .formPanel {
   display: flex;
   flex-direction: column;
-  padding: 10rem 2rem;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding-top: 3rem;
 }
 
 .header {
   font-size: 2rem;
   font-weight: 500;
-  color: var(--main-text-color);
+  color: var(--dim-text-color);
+  padding: 1rem;
+  text-align: center;
 }
 
 .formDetails {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 1.2rem;
+  gap: 1rem;
   width: 100%;
 }
 
@@ -33,13 +37,14 @@
   flex-wrap: wrap;
 }
 
-.label {
+
+.formContainer label{
   font-size: 1.6rem;
   color: var(--dim-text-color);
-  padding: 0.3rem;
+  padding: 0.5rem 0rem;
 }
 
-.inputField {
+.formContainer input:not([type="radio"]), select {
   border: 1px solid var(--dim-text-color);
   border-radius: 4px;
   font-size: 1.5rem;
@@ -47,5 +52,45 @@
   padding: 0.37rem 0.75rem;
   color: var(--dim-text-color);
   background-color: var(--main-bg-color);
-  height: 40px;
+  width: 100%;
+  height: 4rem;
 }
+
+.inputGroup {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.5rem;
+  align-items: center;
+  color: var(--dim-text-color);
+}
+
+.inputHeader {
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: var(--dim-text-color);
+  font-weight: 600;
+  padding-bottom: 0.3rem;
+}
+
+.formFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.formSubmit {
+  margin: 0rem;
+  border-color: var(--dim-text-color);
+}
+/* TODO: Make 420px a variable */
+
+@media screen and (max-width: 420px) {
+ .formPanel {
+    padding: 2rem;
+ } 
+
+ > formFooter .formFooter {
+    justify-content: space-between;
+  }
+}
+ 

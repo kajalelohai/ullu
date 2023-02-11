@@ -1,26 +1,8 @@
+@import '../../views/Home/styles.module.scss';
+
 .btn {
-  font-size: 1.6rem;
-  cursor: pointer;
   margin: 0rem 4rem;
-  padding: 1.3rem 5.5rem;
-  border-radius: 0.5rem;
-  border: 0.2rem solid var(--main-text-color);
-  background: var(--main-bg-color);
-  color: var(--main-text-color);
-  transition: all 0.1s ease-in-out;
-
-  &:hover {
-    opacity: 0.9;
-  }
-
-  &:active {
-    opacity: 1;
-  }
-
-  &:disabled {
-    cursor: auto;
-    opacity: 0.5;
-  }
+  @include buttonSet(var(--main-text-color), var(--main-bg-color))
 }
 
 .linkBtn {

@@ -58,6 +58,50 @@ body {
   color: var(--main-text-color);
 }
 
+@mixin displaySet {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@mixin buttonSet($color, $bgColor) {
+  cursor: pointer;
+  border: 0.2rem solid $color;
+  background: $bgColor;
+  color: $color;
+  transition: all 0.1s ease-in-out;
+  font-size: 1.6rem;
+  padding: 1.3rem 5.5rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: auto;
+    opacity: 0.5;
+  }
+}
+
+button,
+input:not([type="file"]),
+select,
+textarea {
+  border-radius: .25rem;
+}
+
+input[type="radio"] {
+  width: 3rem;
+  height: 2rem;
+  background-color: var(--dim-text-color);
+  accent-color: var(--dim-text-color)
+}
+
 .topNav {
   width: 100%;
   height: 6rem;

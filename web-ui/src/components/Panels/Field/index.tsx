@@ -1,3 +1,5 @@
+import * as s from './styles.module.scss';
+
 export enum Articles {
   der = 'der',
   die = 'die',
@@ -49,17 +51,21 @@ const InputField: React.FunctionComponent<InputFieldProps> = ({
   className = ''
 }) => {
   return (
-    <div className={`${className}`}>
-      <label htmlFor="word">Word</label>
+    <div className={`${s.inputFieldSet} ${className}`}>
+      <div className={s.caseInputSet}>
+      <label htmlFor="word" className={s.label}>Word</label>
       <input placeholder={word} aria-label={word} type="text" name={word} />
-      <label htmlFor="article">Article</label>
+      </div>
+      <div className={s.selectInputSet}>
+      <label htmlFor="article" className={s.label}>Article</label>
       <select onChange={handleChange} id="article">
         {articlesList?.map((article) => (
           <option key={article} value={article}>
             {article}
           </option>
         ))}
-      </select>
+        </select>
+        </div>
     </div>
   );
 };
