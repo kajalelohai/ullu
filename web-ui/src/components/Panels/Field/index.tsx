@@ -52,12 +52,8 @@ const InputField: React.FunctionComponent<InputFieldProps> = ({
 }) => {
   return (
     <div className={`${s.inputFieldSet} ${className}`}>
-      <div className={s.caseInputSet}>
-      <label htmlFor="word" className={s.label}>Word</label>
-      <input placeholder={word} aria-label={word} type="text" name={word} />
-      </div>
       <div className={s.selectInputSet}>
-      <label htmlFor="article" className={s.label}>Article</label>
+      <label htmlFor="article">Article</label>
       <select onChange={handleChange} id="article">
         {articlesList?.map((article) => (
           <option key={article} value={article}>
@@ -65,7 +61,11 @@ const InputField: React.FunctionComponent<InputFieldProps> = ({
           </option>
         ))}
         </select>
-        </div>
+      </div>
+      <div className={s.caseInputSet}>
+      <label htmlFor="word">Word</label>
+      <input placeholder={word} aria-label={word} type="text" name={word} />
+      </div>
     </div>
   );
 };

@@ -1,8 +1,28 @@
-@import '../../views/Home/styles.module.scss';
+@import '../../variables.scss';
 
 .btn {
   margin: 0rem 4rem;
-  @include buttonSet(var(--main-text-color), var(--main-bg-color))
+  cursor: pointer;
+  border: 0.2rem solid var(--main-text-color);
+  background: var(--main-bg-color);
+  color: var(--main-text-color);
+  transition: all 0.1s ease-in-out;
+  font-size: 1.6rem;
+  padding: 1.3rem 5.5rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: auto;
+    opacity: 0.5;
+  }
 }
 
 .linkBtn {
@@ -24,7 +44,7 @@
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: $sm) {
   .btn {
     margin: 0.4rem 0rem;
   }

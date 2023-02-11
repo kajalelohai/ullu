@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -47,45 +49,9 @@ body {
   }
 }
 
-$breakpoints: (
-  sm: 40rem,
-  md: 74rem,
-  lg: 108rem
-) !default;
-
 body {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
-}
-
-@mixin displaySet {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-@mixin buttonSet($color, $bgColor) {
-  cursor: pointer;
-  border: 0.2rem solid $color;
-  background: $bgColor;
-  color: $color;
-  transition: all 0.1s ease-in-out;
-  font-size: 1.6rem;
-  padding: 1.3rem 5.5rem;
-  border-radius: 0.5rem;
-
-  &:hover {
-    opacity: 0.9;
-  }
-
-  &:active {
-    opacity: 1;
-  }
-
-  &:disabled {
-    cursor: auto;
-    opacity: 0.5;
-  }
 }
 
 button,
@@ -185,7 +151,7 @@ input[type="radio"] {
   text-align: center;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: $sm) {
   .title {
     padding-left: 10rem;
   }

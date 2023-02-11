@@ -2,6 +2,7 @@ export const formContainer: string;
 export const formDetails: string;
 export const formFooter: string;
 export const formPanel: string;
+export const formSection: string;
 export const formSubmit: string;
 export const header: string;
 export const inputGroup: string;

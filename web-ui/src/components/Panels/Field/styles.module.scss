@@ -1,26 +1,30 @@
-@import '../../../views/Home/styles.module.scss';
+@import '../../../variables.scss';
 
 .inputFieldSet {
-  @include displaySet;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.caseInputSet, 
+.selectInputSet {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .caseInputSet {
-  @include displaySet;
   flex-grow: 1;
-}
-
-.selectInputSet {
-  @include displaySet;
   margin-left: 3rem;
 }
 
-@media screen and (max-width: 420px) {
-.caseInputSet {
-  max-width: 22.9rem;
-}
+@media screen and (max-width: $sm) {
+  .caseInputSet {
+    max-width: 22.9rem;
+  }
 
-.selectInputSet {
-max-width: 10rem;
-margin-left: 2rem;
-}
+  .selectInputSet {
+    max-width: 10rem;
+    margin-left: 2rem;
+  }
 }

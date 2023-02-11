@@ -2,7 +2,8 @@ import * as s from './styles.module.scss';
 
 export enum ButtonType {
   primary = 'primary',
-  link = 'link'
+  link = 'link',
+  cancel = 'Cancel',
 }
 
 export interface ButtonProps {

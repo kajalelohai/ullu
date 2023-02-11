@@ -31,6 +31,7 @@ export default function VocabBuilder() {
               <input type="radio" value="Neuter" name="gender" /> Neuter
             </div>
           </div>
+          <div className={s.formSection}>
           <div className={s.row}>
             <h4 className={s.inputHeader}>Nominative Case</h4>
             <InputField word='' article=''/>
@@ -47,9 +48,10 @@ export default function VocabBuilder() {
             <h3 className={s.inputHeader}>Dative Case</h3>
             <InputField word='' article='' />
           </div>
+          </div>
           <div className={s.formFooter}>
             <Button type={ButtonType.primary} onClick={() => {}} className={s.formSubmit}>Save</Button>
-            <Button type={ButtonType.primary} onClick={() => {}} className={s.formSubmit}>Cancel</Button>
+            <Button type={ButtonType.cancel} onClick={() => {}} className={s.formSubmit}>Cancel</Button>
           </div>
         </Form>
       </article>
