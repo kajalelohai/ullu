@@ -1,5 +1,5 @@
 {
-  "name": "ull-api",
+  "name": "ullu-api",
   "version": "0.1.0",
   "scripts": {
     "build": "tsc",
@@ -11,10 +11,10 @@
   "dependencies": {
     "@apollo/server": "^4.3.2",
     "class-validator": "^0.14.0",
-    "graphql": "^15.8.0",
+    "graphql": "^16.6.0",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.1.4",
-    "type-graphql": "^1.1.1",
+    "type-graphql": "^2.0.0-beta.1",
     "typeorm": "^0.3.11"
   },
   "devDependencies": {

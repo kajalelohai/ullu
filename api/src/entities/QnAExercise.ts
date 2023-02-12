@@ -1,5 +1,5 @@
-import { ObjectType, ID, Field } from 'type-graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ObjectType, Field } from 'type-graphql';
+import { Column, Entity, Unique } from 'typeorm';
 import { Exercise } from './Exercise';
 
 /**
@@ -10,6 +10,7 @@ import { Exercise } from './Exercise';
  */
 @ObjectType()
 @Entity()
+@Unique('uq_question', ['question', 'author.id'])
 export class QnAExercise extends Exercise {
   @Field()
   @Column({ type: 'text' })
@@ -22,5 +23,5 @@ export class QnAExercise extends Exercise {
   // Can the question and answer be flipped?
   @Field((type) => Boolean)
   @Column({ type: 'boolean' })
-  isFlippable: Boolean;
+  isFlippable: Boolean = false;
 }

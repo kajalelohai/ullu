@@ -1,9 +1,7 @@
 import 'reflect-metadata';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import * as path from 'path';
 import { buildSchema } from 'type-graphql';
-
 import { User } from './entities/User';
 import { DataSource } from 'typeorm';
 import { QnAExercise } from './entities/QnAExercise';
@@ -38,9 +36,9 @@ async function bootstrap() {
 
   const schema = await buildSchema({
     resolvers: [QnAResolver],
-    // automatically create `schema.gql` file with schema definition in current
-    // folder
-    emitSchemaFile: path.resolve(__dirname, 'schema.gql')
+    validate: {
+      forbidUnknownValues: false
+    }
   });
 
   const server = new ApolloServer<Context>({

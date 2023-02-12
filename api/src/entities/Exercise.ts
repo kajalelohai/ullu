@@ -3,7 +3,7 @@
  * we can start with something useable, and then add more content to it.
  */
 
-import { Field, ID, ObjectType } from 'type-graphql';
+import { Field, ID, Int, ObjectType } from 'type-graphql';
 import {
   BaseEntity,
   Column,
@@ -75,7 +75,7 @@ export class Exercise extends BaseEntity {
   // 2: incorrect response; where the correct one seemed easy to recall.
   // 1: incorrect response; the correct one remembered.
   // 0: complete blackout
-  @Field()
+  @Field((type) => Int)
   @Column({
     type: 'int',
     enum: ExerciseGrade,
@@ -83,16 +83,16 @@ export class Exercise extends BaseEntity {
   })
   grade: ExerciseGrade = ExerciseGrade.BLACKOUT;
 
-  @Field()
-  @Column({ type: 'date' })
-  dueOn: Date;
+  @Field({ nullable: true })
+  @Column({ type: 'date', nullable: true })
+  dueOn?: Date;
 
   @Field((type) => [Attachment])
   @OneToMany(() => Attachment, (att) => att.exercise)
   attachments: Attachment[];
 
   @Field()
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, { nullable: false })
   author: User;
 }
 
