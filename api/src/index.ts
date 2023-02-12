@@ -4,10 +4,11 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 import * as path from 'path';
 import { buildSchema } from 'type-graphql';
 
-import { NounResolver } from './graphql/resolvers/noun';
 import { User } from './entities/User';
 import { DataSource } from 'typeorm';
-import { Noun } from './entities/Noun';
+import { QnAExercise } from './entities/QnAExercise';
+import { Attachment } from './entities/Exercise';
+import { QnAResolver } from './graphql/resolvers/qna-resolver';
 
 export interface Context {
   user?: User;
@@ -18,7 +19,7 @@ const AppDataSource = new DataSource({
   synchronize: true,
   logging: true,
   database: './ullu.db',
-  entities: [User, Noun]
+  entities: [User, Attachment, QnAExercise]
 });
 
 async function bootstrap() {
@@ -36,7 +37,7 @@ async function bootstrap() {
   }
 
   const schema = await buildSchema({
-    resolvers: [NounResolver],
+    resolvers: [QnAResolver],
     // automatically create `schema.gql` file with schema definition in current
     // folder
     emitSchemaFile: path.resolve(__dirname, 'schema.gql')
