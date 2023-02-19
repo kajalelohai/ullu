@@ -6,8 +6,17 @@
   box-sizing: border-box;
 }
 
+/* Dark mode as default mode */
 :root {
   font-size: 10px;
+  --main-bg-color: #222;
+  --main-text-color: #ffffff;
+  --secondary-bg-color: #444;
+  --cta-text-color: #888;
+  --dim-text-color: #bbbbbb88;
+  --error-text-color: #f12;
+  --border-color: var(--cta-text-color);
+  --bs-text-opacity: 1;
 }
 
 body {
@@ -21,7 +30,6 @@ body {
   height: 100vh;
 }
 
-/* Dark mode */
 @media (prefers-color-scheme: light) {
   :root {
     --main-bg-color: #fff;
@@ -29,20 +37,6 @@ body {
     --secondary-bg-color: #eeeeee;
     --cta-text-color: #22222299;
     --dim-text-color: #888;
-    --error-text-color: #f12;
-    --border-color: var(--cta-text-color);
-    --bs-text-opacity: 1;
-  }
-}
-
-/* Light mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --main-bg-color: #222;
-    --main-text-color: #ffffff;
-    --secondary-bg-color: #444;
-    --cta-text-color: #888;
-    --dim-text-color: #bbbbbb88;
     --error-text-color: #f12;
     --border-color: var(--cta-text-color);
     --bs-text-opacity: 1;
