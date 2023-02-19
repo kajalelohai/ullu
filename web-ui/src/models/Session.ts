@@ -54,7 +54,7 @@ export const newSession = async <T extends Identifiable>(
   const allItems = Object.values(bank);
   const learnedEx = Object.values(learned);
   const dueNow = learnedEx.filter((ex) => isBefore(ex.due, new Date()));
-  const newExercises = {};
+  const newExercises: {[key: string] : any} = {};
 
   for (const item of allItems) {
     if (!learned[item.id]) {
