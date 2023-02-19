@@ -8,7 +8,7 @@ import {
   Exercise,
   solveExercise
 } from '~src/models/Session';
-import { Record } from '~src/types';
+import { Record } from './types';
 import { SuperMemoGrade } from 'supermemo';
 import { recordify } from './utils';
 
@@ -58,9 +58,11 @@ export default createStore<AppState>()(
             s.exercises = { ...s.exercises, ...newExercises };
             s.activeSession = session;
           });
-        } catch (err) {
+        } catch (err: unknown) {
           set((s) => {
-            s.newSessionError = err.message;
+            if (err instanceof Error) {
+              s.newSessionError = err.message;
+            }
           });
         }
       },
@@ -95,7 +97,7 @@ export default createStore<AppState>()(
 
           state.exercises[exId] = solveExercise(exercise, grade);
           state.activeSession.exerciseIds =
-            state.activeSession.exerciseIds.filter((id) => id !== exId);
+            state.activeSession.exerciseIds.filter((id: string) => id !== exId);
         });
       }
     })),
