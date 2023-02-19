@@ -1,19 +1,25 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
-    "jsx": "preserve",
-    "experimentalDecorators": true,
-    "jsxImportSource": "react",
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "strictNullChecks": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
     "skipLibCheck": true,
-    "lib": ["ES2021", "DOM"],
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
       "~src/*": ["src/*"]
     }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "references": [{"path": "./tsconfig.node.json" }]
 }

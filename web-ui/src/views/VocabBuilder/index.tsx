@@ -1,5 +1,5 @@
 import { Form } from 'react-router-dom';
-import Button, { ButtonType } from '../../components/Button';
+import Button, { ButtonType } from '~src/components/Button';
 import InputField from '~src/components/Panels/Field';
 import * as s from './styles.module.scss';
 
