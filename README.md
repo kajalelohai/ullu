@@ -1,43 +1,50 @@
 # ullu - An application to learn German
 
-
 > Note: At this stage, I am building Ullu with me as first and only user. So
 > focus is on teaching me German most effectively. All other objectives are
 > secondary to that.
 
-Ullu unlike other language learning applications, do not do any spoon feeding.
-User builds their own learning path, Ullu only provides a medium for practicing
-what user learns on their own.
+I've been using Anki for learning German, but I find it lacking. I wanted more,
+so I created Ullu. Ullu is supposed to be [Anki](https://ankiweb.net/), but with
+additional features and constraints.
 
-Ullu provides:
-1. A set of interactive UI widgets for practicing in different ways
-2. An algorithm which keeps user on track and ensure optimal learning
+_But why not build an Anki plugin for this?_
 
-Following widgets have been implemented so far:
+Well, because I am new in Berlin and I am looking for a job. This project is a
+nice excuse to showcase my skills in technologies I am seeking a job in
+(Typescript/React/Node).
 
-1. **Vocabulary Card**
+*Features* I want to add top of my list.
 
-    **Behavior**
-    1. Shows a word and ask user to guess it in their mind
-    2. Accepts feedback from user on how hard it was to guess the word. This
-       feedback is used to determine how often this word will be repeated for
-       user
-    3. Provides a way to see examples before revealing the meaning of shown word
+1. Automatically generated grammar tips for sentences added
+
+2. Opportunity to explore more about a word, grammar concept or sentence. e.g
+   when I see a word used in an example sentence, sometimes I am curious about
+   how else this word can be used. The app should allow me to take a word on a
+   ride and see more examples of its usage, and add them to my exercise deck
+   on-demand
+
+3. Different ways of solving the exercises
+
+   Instead of just front/back or "fill in the blanks", I want different ways of
+   solving exercises. For example jumbled words thingy from Duolingo
+
+4. Gamified experience
+
+   Gamification is a gimick, it adds no real value. But value isn't the end-all
+   be-all to me. I'd like a little joy every now and then. A silly looking
+   cartoon celebrating my "scores" with a silly dance might just do that 😊
+
+Ullu has additional *constraints*. Unlike Anki, Ullu isn't a "remember anything"
+app, it is a "learn German" app.
 
 ## TODOs
 
 Next stage for this app is to get useful for *me* asap. For that, I have chosen
 these two tasks for immediate execution:
 
-- [X] Adding Nouns
+1. [ ] Import Anki decks per-user
+2. [ ] Replicate Anki study experience
 
-    We'll limit the app to guessing meaning of nouns for now. And implement
-    singular/plural stuff after that, and thereafter more mature grammar. Adding
-    nouns don't need a UI (since building good UIs is super time-consuming), we
-    just need the nouns in our world somehow.
-
-- [X] Tracking progress
-
-    Once the nouns are in, I want the ability to start practicing remembering
-    them. So a way of making and tracking progress should happen next. This will
-    make the app useful for me, and we'll know how to evolve from there.
+These steps will provide the ground for expanding Ullu to build extra feature
+on.
