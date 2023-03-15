@@ -12,9 +12,7 @@
     "skipLibCheck": true,
     "lib": ["es2018", "esnext.asynciterable"],
     "baseUrl": "./",
-    "paths": {
-      "~src/*": ["src/*"]
-    },
+    "paths": {},
     "outDir": "dist"
   },
   "include": ["src/**/*"],

@@ -13,7 +13,7 @@ export class User extends BaseEntity {
   email: string;
 
   @Field()
-  @Column()
+  @Column({ unique: true })
   username: string;
 
   @Column()

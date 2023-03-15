@@ -2,54 +2,30 @@ import 'reflect-metadata';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { buildSchema } from 'type-graphql';
-import { User } from './entities/User';
-import { DataSource } from 'typeorm';
-import { QnAExercise } from './entities/QnAExercise';
-import { Attachment } from './entities/Exercise';
 import { QnAResolver } from './graphql/resolvers/qna-resolver';
-
-export interface Context {
-  user?: User;
-}
-
-const AppDataSource = new DataSource({
-  type: 'sqlite',
-  synchronize: true,
-  logging: true,
-  database: './ullu.db',
-  entities: [User, Attachment, QnAExercise]
-});
+import { AuthResolver } from './graphql/resolvers/auth-resolver';
+import authChecker from './lib/auth-checker';
+import { ResolverContext } from './lib/types';
+import dataSource from './datasource';
 
 async function bootstrap() {
-  await AppDataSource.initialize();
-  let user: User;
-  try {
-    user = await User.findOneByOrFail({ email: 'test@test.com' });
-  } catch (err) {
-    user = new User();
-    user.email = 'test@test.com';
-    user.password = 'test';
-    user.roles = ['user'];
-    user.username = 'test';
-    await user.save();
-  }
+  await dataSource.initialize();
 
   const schema = await buildSchema({
-    resolvers: [QnAResolver],
+    authChecker,
+    resolvers: [QnAResolver, AuthResolver],
     validate: {
       forbidUnknownValues: false
     }
   });
 
-  const server = new ApolloServer<Context>({
+  const server = new ApolloServer<ResolverContext>({
     schema
   });
 
-  const { url } = await startStandaloneServer(server, {
-    context: async () => {
-      const ctx: Context = { user };
-
-      return ctx;
+  const { url } = await startStandaloneServer(server as any, {
+    context: async ({ req, res }) => {
+      return { req, res, session: {} };
     }
   });
 
