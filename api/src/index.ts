@@ -5,8 +5,10 @@ import { buildSchema } from 'type-graphql';
 import { QnAResolver } from './graphql/resolvers/qna-resolver';
 import { AuthResolver } from './graphql/resolvers/auth-resolver';
 import authChecker from './lib/auth-checker';
-import { ResolverContext } from './lib/types';
+import { ResolverContext, Session } from './lib/types';
 import dataSource from './datasource';
+import cookie from 'cookie';
+import { sessions } from './session';
 
 async function bootstrap() {
   await dataSource.initialize();
@@ -25,7 +27,15 @@ async function bootstrap() {
 
   const { url } = await startStandaloneServer(server as any, {
     context: async ({ req, res }) => {
-      return { req, res, session: {} };
+      const sessionId = cookie.parse(req.headers.cookie || '').sessionId;
+      let user = sessions[sessionId];
+      let session: Partial<Session> = {};
+
+      if (user) {
+        session = { id: sessionId, user };
+      }
+
+      return { req, res, session };
     }
   });
 

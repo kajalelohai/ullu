@@ -1,10 +1,12 @@
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 import { Repository } from 'typeorm';
 import { compare, hash } from 'bcrypt';
+import { v4 as uuid } from 'uuid';
 import { User } from '../../entities/User';
 import { ResolverContext } from '../../lib/types';
 import ServerError from '../../lib/server-error';
 import datasource from '../../datasource';
+import { sessions } from '../../session';
 
 @Resolver((of) => User)
 export class AuthResolver {
@@ -38,7 +40,7 @@ export class AuthResolver {
     @Arg('password') password: string,
     @Ctx() ctx: ResolverContext
   ): Promise<User> {
-    const { session } = ctx;
+    const { res } = ctx;
     try {
       const user = await this.userRepo.findOne({ where: { email } });
       if (!user) {
@@ -54,11 +56,10 @@ export class AuthResolver {
         });
       }
 
-      if (user && session) {
-        // eslint-disable-next-line no-param-reassign
-        (ctx.req as any).test = 'TEST BABY';
-        session.user = user;
-        console.log('SETTING USER ON SESSION', session);
+      if (user && res) {
+        const sessionId = uuid();
+        sessions[sessionId] = user;
+        res.cookie('sessionId', sessionId, { httpOnly: true });
       }
 
       return user;
@@ -71,7 +72,7 @@ export class AuthResolver {
   @Authorized()
   @Mutation((returns) => Boolean)
   async logout(@Ctx() ctx: ResolverContext) {
-    if (ctx.session) ctx.session = undefined;
+    sessions[ctx.session.id] = null;
 
     return true;
   }

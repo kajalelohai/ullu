@@ -7,8 +7,7 @@ import type { ResolverContext } from './types';
 const authChecker: AuthChecker<ResolverContext> = (args: {
   context: ResolverContext;
 }) => {
-  const { req, session } = args.context;
-  console.log('SESSION', session, (args.context.req as any).test);
+  const { session } = args.context;
   const user = session ? session.user : null;
 
   return Boolean(user);

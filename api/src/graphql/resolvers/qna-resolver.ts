@@ -1,3 +1,4 @@
+import { ResolverContext } from 'src/lib/types';
 import {
   Resolver,
   Query,
@@ -5,7 +6,8 @@ import {
   InputType,
   Arg,
   Field,
-  Ctx
+  Ctx,
+  Authorized
 } from 'type-graphql';
 import { Context } from 'vm';
 import { QnAExercise } from '../../entities/QnAExercise';
@@ -21,6 +23,7 @@ class QnAExerciseInput implements Partial<QnAExercise> {
 
 @Resolver((of) => QnAExercise)
 export class QnAResolver {
+  @Authorized()
   @Query((returns) => [QnAExercise], { nullable: false })
   async allExercises(@Ctx() ctx: Context): Promise<QnAExercise[]> {
     const exs = await QnAExercise.findBy({ author: ctx.user });
@@ -32,16 +35,18 @@ export class QnAResolver {
     });
   }
 
+  @Authorized()
   @Mutation((returns) => QnAExercise)
   async exercise(
     @Arg('data') qnaInput: QnAExerciseInput,
-    @Ctx() ctx: Context
+    @Ctx() ctx: ResolverContext
   ): Promise<QnAExercise> {
     const ex = new QnAExercise();
+    const user = ctx.session.user;
 
     ex.question = qnaInput.question;
     ex.answer = qnaInput.answer;
-    ex.author = ctx.user;
+    ex.author = user;
     // TODO: Figure out how we can get an array as default instead of doing this
     ex.attachments ||= [];
 
